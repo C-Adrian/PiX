@@ -1,0 +1,34 @@
+:root
+{
+	--nav-bg-color: #303030;
+	--nav-font-color: white;
+	--nav-accent-color: #718be8;
+	--background-color: #e5e5e5;
+	--body-color: #f9f9f9;
+}
+
+html
+{
+	background-color: var(--background-color);
+}
+
+main
+{
+	margin-left: auto;
+	margin-right: auto;
+	padding: 1%;
+	width: 80em;
+	min-height: 10em;
+
+	background-color: var(--body-color);
+}
+
+@media (max-width: 80em)
+{
+
+main
+{
+	width: 100%;
+}
+
+}

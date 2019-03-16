@@ -1,0 +1,108 @@
+
+body
+{
+	margin: 0;
+}
+
+nav
+{
+	background-color: var(--nav-bg-color);
+	margin: 0;
+	padding: 0;
+	height: auto;
+	position: fixed;
+	width: 100%;
+	display: inline-block;
+	flex-wrap: nowrap;
+}
+
+nav > .navbar_half
+{
+	height: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: flex-end;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+nav #navbar_half_left
+{
+	float: left;
+}
+
+nav #navbar_half_right
+{
+	float: right;
+}
+
+nav > .navbar_half > .clickable_item, .dropdown_menu
+{
+	background-color: var(--nav-bg-color);
+	border-width: 0;
+	text-decoration: none;
+	font-size: 1.2em;
+	color: var(--nav-font-color);
+	font-family: "Book Antiqua";
+
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	height: 3em;
+	line-height: 3em;
+}
+
+nav .clickable_item:hover
+{
+	border-radius: 0.2em;
+	background-color: var(--nav-accent-color);
+}
+
+.dropdown_menu
+{
+	display: none;
+}
+
+.dropdown_menu:hover .dropdown_content 
+{
+	display: flex;
+	flex-direction: column;
+}
+
+.dropdown_content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  z-index: 1;
+}
+
+nav .search_box
+{
+	width: 20em;
+	font-size: 0.9em;
+	height: 2.5em;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	margin-top: 0.75em;
+	margin-bottom: 0.75em;
+	padding: 0.3em;
+	background-color: white;
+	border-width: 0;
+	border-radius: 0.2em;
+}
+
+@media (max-width: 55em)
+{
+
+nav > .navbar_half > .clickable_item {display: none;}
+nav > .navbar_half > #search_button {display: flex;}
+.dropdown_menu {display: inline-block;}
+
+nav .search_box
+{
+	width: 12em;
+}
+
+}
+

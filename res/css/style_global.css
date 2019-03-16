@@ -1,5 +1,4 @@
-:root
-{
+:root {
 	--nav-bg-color: #303030;
 	--nav-font-color: white;
 	--nav-accent-color: #718be8;
@@ -7,28 +6,21 @@
 	--body-color: #f9f9f9;
 }
 
-html
-{
+html {
 	background-color: var(--background-color);
 }
 
-main
-{
+main {
 	margin-left: auto;
 	margin-right: auto;
 	padding: 70px;
 	width: 90%;
 	min-height: 10em;
-
 	background-color: var(--body-color);
 }
 
-@media (max-width: 80em)
-{
-
-main
-{
-	width: 90%;
-}
-
+@media (max-width: 80em) {
+	main {
+		width: 90%;
+	}
 }

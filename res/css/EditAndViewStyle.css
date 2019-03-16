@@ -27,10 +27,23 @@ header {
     height: auto;
     padding-top: 2.5em;
 }
+.button_item{
+    border-radius: 0.4em;
+    background-color: var(--nav-bg-color);
+    padding: 10px;
+    color: white;
+    font-family: "Book Antiqua";
+}
+.button_item:hover {
+    border-radius: 0.4em;
+    background-color: var(--nav-accent-color);
+    padding: 10px;
+}
 
 .filters>button {
     display: block;
 }
+
 
 .filter>img {
     width: 100%;
@@ -42,3 +55,8 @@ header {
     width: 30%;
 }
 
+.filter>.button {
+    border-radius: 0.2em;
+    background-color: var(--nav-accent-color);
+    padding: 100px;
+}

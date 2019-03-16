@@ -6,7 +6,9 @@
     background-color: var(--background-color);
 }
 
-header {
+/*header style*/
+
+.edit_view header {
     overflow: auto;
 }
 
@@ -19,30 +21,36 @@ header {
     float: left;
     width: 40%;
     height: auto;
+    
 }
 
 #right {
     float: right;
     width: 50%;
     height: auto;
-    padding-top: 2.5em;
+    
 }
-.button_item{
+.filters
+{
+    padding: 0.5em;
+    border-radius:0.4em;
+    border:solid black;
+}
+.button_item {
     border-radius: 0.4em;
     background-color: var(--nav-bg-color);
-    padding: 10px;
+    padding: 0.5em;
     color: white;
     font-family: "Book Antiqua";
+    float: right;;   
 }
+
 .button_item:hover {
     border-radius: 0.4em;
     background-color: var(--nav-accent-color);
-    padding: 10px;
+    padding: 0.5em;
 }
 
-.filters>button {
-    display: block;
-}
 
 
 .filter>img {
@@ -55,8 +63,76 @@ header {
     width: 30%;
 }
 
-.filter>.button {
-    border-radius: 0.2em;
+/*footer style*/
+
+.edit_view footer {
+    padding-top: 2em;
+    text-align: center;
+}
+
+.edit_view footer .save_dropdown {
+    border-radius: 0.4em;
+    color: white;
+    background-color: var(--nav-bg-color);
+    padding: 0.5em;
+}
+
+.edit_view footer .footer_btn {
+    display: inline;
+    border-radius: 0.4em;
+    background-color: var(--nav-bg-color);
+    padding: 0.5em;
+    color: white;
+    font-family: "Book Antiqua";
+}
+.edit_view footer .footer_btn:hover {
+    border-radius: 0.4em;
     background-color: var(--nav-accent-color);
-    padding: 100px;
+    padding: 0.5em;
+}
+
+#download_form,#delete_form,#rotate_form,#resize_form{
+    display: inline-block;
+    padding-left:3em; 
+    padding-right:3em; 
+    padding-bottom: 1em;
+}
+
+.edit_view footer h4{
+    display: inline-block;
+}
+.edit_view footer ul>li{
+    display: inline-block;
+    list-style-type: none;
+}
+.edit_view footer .tags
+{
+    display:flex;
+}
+.tags .tag{
+    color: #ff000021;
+    text-decoration: underline;
+    text-shadow: 0.03em 0.03em black;
+    font-weight: bold;
+    font-size: 1.2em;
+    font-style: italic;
+    
+}
+
+#resize_form label
+{
+    font-weight: bold;
+    font-size: 1.2em;
+    font-style: italic;
+}
+#resize_form input{
+    border-radius: 0.4em;
+    color: white;
+    background-color: var(--nav-bg-color);
+    padding: 0.5em;
+    width: 5em;
+}
+#resize_form input::placeholder{
+    color:white;
+    opacity: 0.4;
 }

@@ -1,0 +1,44 @@
+.edit_view {
+    border: solid black;
+    border-width: 0.3em;
+    border-radius: 3%;
+    padding: 1.5em;
+    background-color: var(--background-color);
+}
+
+header {
+    overflow: auto;
+}
+
+#selected_image {
+    width: 100%;
+    height: auto;
+}
+
+#left {
+    float: left;
+    width: 40%;
+    height: auto;
+}
+
+#right {
+    float: right;
+    width: 50%;
+    height: auto;
+    padding-top: 2.5em;
+}
+
+.filters>button {
+    display: block;
+}
+
+.filter>img {
+    width: 100%;
+    height: auto;
+}
+
+.filter {
+    display: inline-block;
+    width: 30%;
+}
+

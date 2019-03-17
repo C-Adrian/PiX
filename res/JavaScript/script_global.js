@@ -1,5 +1,5 @@
 function hideAdvSearch() {
-    let adv_searchBtn = document.getElementById('adv_searchBtn');
+    let adv_searchBtn = document.getElementsByClassName('adv_searchBtn');
     let advSearch = document.querySelector('.advanced_search');
 
     if (advSearch.className.indexOf('is--open') != -1) {

@@ -1,0 +1,36 @@
+.advanced_search {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30%;
+    transform: translateX(-100%);
+    transition: .5s;
+    background: rgb(82, 80, 80);
+    color: #fff;
+    text-align: center;
+    border-top-right-radius: 3%;
+    border-bottom-right-radius: 3%;
+}
+
+.advanced_search.is--open {
+    transform: translateX(0);
+}
+
+.advanced_search ul {
+    list-style: none;
+    padding: 0;
+}
+
+.advanced_search a {
+    color: #fff;
+    display: inline-block;
+    text-transform: uppercase;
+    margin: 1em 0;
+}
+
+@media screen and (min-width: 500px) {
+    .menu {
+        width: 300px;
+    }
+}

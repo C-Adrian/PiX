@@ -6,15 +6,16 @@ nav {
 	background-color: var(--nav-bg-color);
 	margin: 0;
 	padding: 0;
-	height: auto;
+	height: var(--nav-height);
 	position: fixed;
 	width: 100%;
-	display: inline-block;
+	display: inline-flex;
+	justify-content: space-between;
 	flex-wrap: nowrap;
 }
 
 nav>.navbar_half {
-	height: auto;
+	height: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -31,26 +32,32 @@ nav #navbar_half_right {
 	float: right;
 }
 
-nav>.navbar_half>.clickable_item, .dropdown_menu {
+nav>.navbar_half > .clickable_item, .dropdown_menu {
 	background-color: var(--nav-bg-color);
 	border-width: 0;
 	text-decoration: none;
-	font-size: 1.2em;
+	font-size: 1.1em;
 	color: var(--nav-font-color);
-	font-family: "Book Antiqua";
+	font-family: "Verdana";
 	padding-left: 0.5em;
 	padding-right: 0.5em;
-	height: 3em;
-	line-height: 3em;
+	height: 100%;
+	line-height: 300%;
 }
 
-nav .clickable_item:hover {
+nav .clickable_item:hover, .dropdown_menu:hover {
 	border-radius: 0.2em;
 	background-color: var(--nav-accent-color);
 }
 
+nav .dropdown_content > .clickable_item:hover
+{
+	border-radius: 0;
+}
+
 .dropdown_menu {
 	display: none;
+	position: relative;
 }
 
 .dropdown_menu:hover .dropdown_content {
@@ -59,11 +66,29 @@ nav .clickable_item:hover {
 }
 
 .dropdown_content {
-	display: none;
+	width: 11em;
 	position: absolute;
+	left: 100%;
+	top: 100%;
+	transform: translate(-100%);
+	display: none;
 	background-color: #f1f1f1;
-	min-width: 160px;
-	z-index: 1;
+
+}
+
+.dropdown_content .clickable_item
+{
+	height: 2.5em;
+	line-height: 2.5em;
+	width: auto;
+	background-color: var(--nav-bg-color);
+	border-width: 0;
+	text-decoration: none;
+	font-size: 1.1em;
+	color: var(--nav-font-color);
+	font-family: "Verdana";
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 }
 
 nav .search_box {
@@ -72,8 +97,8 @@ nav .search_box {
 	height: 2.5em;
 	margin-left: 0.5em;
 	margin-right: 0.5em;
-	margin-top: 0.75em;
-	margin-bottom: 0.75em;
+	margin-top: auto;
+	margin-bottom: auto;
 	padding: 0.3em;
 	background-color: white;
 	border-width: 0;
@@ -88,7 +113,7 @@ nav .search_box {
 		display: flex;
 	}
 	.dropdown_menu {
-		display: inline-block;
+		display: flex;
 	}
 	nav .search_box {
 		width: 12em;

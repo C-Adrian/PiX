@@ -19,15 +19,16 @@
 
 #left {
     float: left;
-    width: 40%;
+    width: 80%;
     height: auto;
     
 }
 
 #right {
     float: right;
-    width: 50%;
+    width: 15%;
     height: auto;
+    padding-top: 1.5em;
     
 }
 .filters
@@ -36,6 +37,16 @@
     border-radius:0.4em;
     border:solid black;
 }
+.filter>img {
+    width: 100%;
+    height: auto;
+}
+
+.filter {
+    display:block;
+    width: 70%;
+}
+
 .button_item {
     border-radius: 0.4em;
     background-color: var(--nav-bg-color);
@@ -53,15 +64,6 @@
 
 
 
-.filter>img {
-    width: 100%;
-    height: auto;
-}
-
-.filter {
-    display: inline-block;
-    width: 30%;
-}
 
 /*footer style*/
 

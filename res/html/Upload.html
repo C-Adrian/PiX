@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Upload</title>
+	<link rel="stylesheet" type="text/css" href="../css/Upload.css">
+	<link rel="stylesheet" type="text/css" href="../css/style_global.css">
+	<link rel="stylesheet" type="text/css" href="../css/style_navbar.css">
+	<link rel="stylesheet" type="text/css" href="../style_template.css">
+	<meta charset="UTF-8"> 
+	<meta  name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<nav id="navbar">
+		<div id="navbar_half_left" class="navbar_half">
+			<input type="text" placeholder="Search..." class="search_box">
+			<button type="submit" class="clickable_item" id="search_button">Go</button>
+			<button type="button" class="clickable_item">Advanced search</button>
+		</div>
+		<div id="navbar_half_right" class="navbar_half">
+			<a href="" class="clickable_item">Upload </a>
+			<a href="" class="clickable_item">My images</a>
+			<a href="" class="clickable_item">Logout</a>
+
+			<div class="dropdown_menu"> Menu
+				<div class="dropdown_content">
+					<a href="" class="clickable_item">Upload </a>
+					<a href="" class="clickable_item">My images</a>
+					<a href="" class="clickable_item">Logout</a>
+				</div>
+			</div>
+
+		</div>
+	</nav>
+	<br>
+	<main class="card">
+		<div class="informatii">
+			<label for="fisier">Alege o imagine.</label>
+			<input type="file" id="fisier">
+
+			<label for="tag1">Tag1</label>
+			<input type="text" id="tag1">
+			<label for="tag2">Tag2</label>
+			<input type="text" id="tag2">
+			<label for="tag3">Tag3</label>
+			<input type="text" id="tag3">
+			<label for="tag4">Tag4</label>
+			<input type="text" id="tag4">
+			<label for="tag5">Tag5</label>
+			<input type="text" id="tag5">
+
+			<label for="titlu">Titlu</label>
+    		<input type="text" 
+        	id="titlu" maxlength="10"
+        	placeholder="titlu"
+    		>
+    		<label for="Coment">Comentariu</label>
+    		<input type="text" 
+        	id="Coment" maxlength="200"
+        	placeholder="Comentariu"
+    		>
+    		<br>
+    		<label for="Categorie">Categorie</label>
+    		<select id="Categorie">
+        	<option value="1">1</option>
+        	<option value="2">2</option>
+        	<option value="3">3</option>
+    		</select>
+			</div>
+			<div class ="imagine">
+				<img src="../imagini/dota.jpg"  alt="o imagine">
+			</div>
+	</main>
+
+</body>
+</html>

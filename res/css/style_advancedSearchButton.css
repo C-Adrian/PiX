@@ -40,7 +40,7 @@
     padding: 0.5em;
     color: white;
     font-family: "Book Antiqua";
-    float: center;;   
+    text-align: center ;
 }
 
 .advanced_search #btn_search:hover {

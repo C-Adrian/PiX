@@ -1,0 +1,123 @@
+html > body
+{
+	margin: 0;
+}
+
+main
+{
+	padding-top: calc(var(--nav-height) + var(--main-padding));
+	padding-bottom: var(--main-padding);
+	padding-right: var(--main-padding);
+	padding-left: var(--main-padding);
+}
+
+main .image_display_label
+{
+	margin-top: 0.3em;
+	margin-left: 0.45em;
+	margin-right: 0.2em;
+	margin-bottom: 0.3em;
+
+	color: var(--nav-bg-color);
+	font-family: "Trebuchet MS";
+	font-size: 2.2em;
+}
+
+main #image_display
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	width: auto;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+
+/* ---- IMAGE FRAME STYLE BEGIN ---- */
+
+.image_frame
+{
+	flex-grow: 1;
+	margin-left: 0.3em;
+	margin-right: 0.3em;
+}
+
+.image_frame .image_title
+{
+	margin-top: 0.2em;
+	margin-bottom: 0.3em;
+
+	font-family: "Trebuchet MS";
+	font-size: 1em;
+}
+
+.image_frame .image_object
+{
+	width: auto;
+}
+
+.image_frame img
+{
+
+	max-width: 25em;
+	max-height: 16em;
+	cursor: pointer;
+}
+
+.image_frame .image_object:hover img
+{
+
+}
+
+.image_object button
+{
+	display: none;
+	position: absolute;
+	float: right;
+	transform: translate(0.5em, calc(-100% - 0.5em));
+
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+
+	font-family: "Verdana";
+	font-size: 0.85em;
+	border-style: none;
+	border-radius: 0.2em;
+	background-color: var(--nav-accent-color);
+	color: var(--nav-font-color);
+	cursor: pointer;
+}
+
+.image_object:hover button
+{
+	display: flex;
+}
+
+.image_frame .image_tags
+{
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
+
+	font-family: "Verdana";
+	font-size: 0.8em;
+}
+
+/* ---- IMAGE FRAME STYLE END ---- */
+
+
+@media (max-width: 80em) {
+
+main .image_display_label
+{
+	font-size: calc(0.8em + 1.8vw);
+	margin-top: calc(0.5vw);
+	margin-left: calc(0.5em + 0.5vw);
+	margin-right-: calc(0.5em + 0.5vw);
+}
+
+
+}

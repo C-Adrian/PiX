@@ -36,6 +36,14 @@
 		display: block;
 		
 	}
+	input[type=text],textarea {
+    padding:5px; 
+    border:2px solid #ccc; 
+    border-radius: 5px;
+    border-radius: 5px;
+    max-width: 100%;
+    max-height: 100px;
+}
 	[id^="tag"]
 	{
 		width: 50%;

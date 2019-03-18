@@ -14,7 +14,7 @@ main
 main .image_display_label
 {
 	margin-top: 0.3em;
-	margin-left: 0.45em;
+	margin-left: 0.2em;
 	margin-right: 0.2em;
 	margin-bottom: 0.3em;
 
@@ -31,8 +31,6 @@ main #image_display
 	align-items: stretch;
 
 	width: auto;
-	margin-left: 1em;
-	margin-right: 1em;
 }
 
 
@@ -77,7 +75,6 @@ main #image_display
 {
 	display: none;
 	position: absolute;
-	float: right;
 	transform: translate(0.5em, calc(-100% - 0.5em));
 
 	padding-left: 0.5em;
@@ -103,7 +100,9 @@ main #image_display
 {
 	margin-top: 0.2em;
 	margin-bottom: 0.2em;
+	max-width: 16em;
 
+	color: gray;
 	font-family: "Verdana";
 	font-size: 0.8em;
 }
@@ -113,17 +112,16 @@ main #image_display
 
 @media (max-width: 80em) {
 
-main .image_display_label
-{
-	font-size: calc(0.8em + 1.8vw);
-	margin-top: calc(0.5vw);
-	margin-left: calc(0.5em + 0.5vw);
-	margin-right-: calc(0.5em + 0.5vw);
-}
 
 }
+
 
 @media (max-width: 55em) {
+
+main .image_display_label
+{
+	font-size: 1.5em;
+}
 
 .image_frame img
 {
@@ -133,7 +131,26 @@ main .image_display_label
 
 }
 
+
 @media (max-width: 38em) {
+
+.image_object button
+{
+	display: flex;
+	position: relative;
+	float: right;
+	transform: translate(0, 0);
+
+	margin-top: 0.2em;
+	padding-top: 0.6em;
+	padding-bottom: 0.6em;
+	z-index: 0;
+}
+
+main .image_display_label
+{
+	font-size: 1.2em;
+}
 
 .image_frame img
 {

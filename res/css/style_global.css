@@ -5,6 +5,7 @@
 	--background-color: #e5e5e5;
 	--body-color: #f9f9f9;
 	--nav-height: 3.5em;
+	--main-padding: 0.5em;
 }
 
 html {
@@ -19,6 +20,7 @@ main {
 	padding-top: var(--nav-height);
 	background-color: var(--body-color);
 }
+
 
 @media (max-width: 80em) {
 	main {

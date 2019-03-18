@@ -3,40 +3,79 @@
 <head>
 	<meta charset="utf8">
 	<title>PiX - Home</title>
-	<meta name="description" content="Template for PiX">
+	<meta name="description" content="PiX Home">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="../css/style_global.css">
 	<link rel="stylesheet" href="../css/style_navbar.css">
-
+	<link rel="stylesheet" href="../css/style_advancedSearchButton.css">
 	<link rel="stylesheet" href="../css/style_home.css">
+	<script src="../JavaScript/script_global.js"></script>
 
 </head>
 
 <body>
 	<nav id="navbar">
-			<div id="navbar_half_left" class="navbar_half">
-				<input type="text" placeholder="Search..." class="search_box">
-				<button type="submit" class="clickable_item" id = "search_button">Go</button>
-				<button type="submit" class="clickable_item">Advanced search</button>
-			</div>
-			<div id="navbar_half_right" class="navbar_half">
-				<a href="" class="clickable_item">Upload </a>
-				<a href="" class="clickable_item">My images</a>
-				<a href="" class="clickable_item">Logout</a>
+		<div id="navbar_half_left" class="navbar_half">
+			<input type="text" placeholder="Search..." class="search_box">
+			<button type="submit" class="clickable_item" id="search_button">Go</button>
+			<button type="button" class="adv_searchBtn clickable_item" onclick="hideAdvSearch()">Advanced
+				search</button>
+		</div>
+		<div id="navbar_half_right" class="navbar_half">
+			<a href="" class="clickable_item">Upload </a>
+			<a href="" class="clickable_item">My images</a>
+			<a href="./Login.html" class="clickable_item">Logout</a>
 
-				<div class="dropdown_menu"> Menu
-					<div class="dropdown_content">
-						<a href="" class="clickable_item">Advanced search</a>
-						<a href="" class="clickable_item">Upload </a>
-						<a href="" class="clickable_item">My images</a>
-						<a href="" class="clickable_item">Logout</a>
-					</div>
+			<div class="dropdown_menu"> Menu
+				<div class="dropdown_content">
+					<button type="button" class="adv_searchBtn clickable_item" onclick="hideAdvSearch()">Advanced
+						search</button>
+					<a href="" class="clickable_item">Upload </a>
+					<a href="" class="clickable_item">My images</a>
+					<a href="./Login.html" class="clickable_item">Logout</a>
 				</div>
-
 			</div>
-	</nav>
 
+		</div>
+	</nav>
+	<aside class="advanced_search">
+		<h2>Advanced Search</h2>
+		<form action="search_script">
+			<div>
+				<label for="tags_search">Tags:</label>
+				<input type="text" name="tags_list" id="tags_search" placeholder="Add tags...">
+			</div>
+			<div>
+				<p>Selecteaza intervalul in care a fost facuta fotografia:</p>
+				<div>
+					<label for="start_date">Nu mai veche de:</label>
+					<input type="date" id="start_date" name="sDate" min="1970-01-01">
+				</div>
+				<div>
+					<label for="end_date">Nu mai noua de:</label>
+					<input type="date" id="end_date" name="eDate">
+				</div>
+			</div>
+			<div>
+				<p>Selecteaza dimensiunile:</p>
+				<div>
+					<label for="search_height">Lungime:</label>
+					<input id="search_height" type="number" placeholder="X px" max="3000" name="height">
+				</div>
+				<div>
+					<label for="search_width">Latime:</label>
+					<input id="search_width" type="number" placeholder="X px" max="4000" name="width">
+				</div>
+			</div>
+			<div>
+				<label for="size">Dimensiunea maxima:</label>
+				<input type="number" id="size" placeholder="X MB" max="10" name="size">
+			</div>
+			<button id="btn_search">Go</button>
+		</form>
+
+	</aside>
 	<main>
 		<h3 class="image_display_label">Images</h3>
 		<div id="image_display">

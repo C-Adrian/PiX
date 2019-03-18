@@ -139,10 +139,10 @@ nav .clickable_item:hover {
     padding: 0.5em;
 }
 
-#download_form, #delete_form, #rotate_form, #resize_form {
+#download_form, #rotate_form, #resize_form {
     display: inline-block;
-    padding-left: 3em;
-    padding-right: 3em;
+    padding-left: 10em;
+    padding-right: 10em;
     padding-bottom: 1em;
 }
 

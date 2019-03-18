@@ -27,7 +27,8 @@ main #image_display
 {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: space-evenly;
+	align-items: stretch;
 
 	width: auto;
 	margin-left: 1em;
@@ -39,7 +40,7 @@ main #image_display
 
 .image_frame
 {
-	flex-grow: 1;
+	flex-grow: 0;
 	margin-left: 0.3em;
 	margin-right: 0.3em;
 }
@@ -60,9 +61,10 @@ main #image_display
 
 .image_frame img
 {
-
 	max-width: 25em;
 	max-height: 16em;
+	min-width: 5em;
+	min-height: 6em;
 	cursor: pointer;
 }
 
@@ -119,5 +121,25 @@ main .image_display_label
 	margin-right-: calc(0.5em + 0.5vw);
 }
 
+}
+
+@media (max-width: 55em) {
+
+.image_frame img
+{
+	max-width: 16em;
+	max-height: 14em;
+}
 
 }
+
+@media (max-width: 38em) {
+
+.image_frame img
+{
+	max-width: 100%;
+	max-height: 100%;
+}
+
+}
+

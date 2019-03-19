@@ -46,6 +46,24 @@
     margin-bottom: 0.5em;
 }
 
+.advanced_search > #dimension_section
+{
+    
+}
+
+.advanced_search #min_width_div, #min_height_div
+{
+    display: inline-block;
+    width: 48%;
+}
+
+.advanced_search #max_width_div, #max_height_div
+{
+    display: inline-block;
+    float: right;
+    width: 48%;
+}
+
 
 .advanced_search a {
     color: #fff;
@@ -73,6 +91,8 @@
     border-width: 0;
     border-radius: 0.2em;
     color: white;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .advanced_search #btn_search:hover {
@@ -80,7 +100,7 @@
 }
 
 .advanced_search input {
-	width: 100%;
+	width: calc(100% - 0.6em);
     height: 2.5em;
 	font-size: 0.85em;
     color: gray;

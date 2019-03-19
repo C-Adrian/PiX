@@ -6,7 +6,7 @@ html > body
 main
 {
 	padding-top: calc(var(--nav-height) + var(--main-padding));
-	padding-bottom: var(--main-padding);
+	padding-bottom: calc(var(--main-padding) + 3em);
 	padding-right: var(--main-padding);
 	padding-left: var(--main-padding);
 }
@@ -90,7 +90,7 @@ main #image_display
 .image_object .download_button
 {
 	background-color: var(--nav-accent-color);
-	bottom: 0.5em;
+	bottom: 0.8em;
 	left: 0.5em;
 }
 
@@ -147,15 +147,21 @@ main .image_display_label
 /*
 .image_object button
 {
-	display: flex;
-	position: relative;
-	float: right;
+	display: inline-block;
+	position: static;
+	padding: 0.7em;
 	transform: translate(0, 0);
-
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
 	margin-top: 0.2em;
-	padding-top: 0.6em;
-	padding-bottom: 0.6em;
-	z-index: 0;
+	margin-bottom: 0.2em;
+}
+
+.image_object .remove_img_button
+{
+	float: right;
 }
 */
 

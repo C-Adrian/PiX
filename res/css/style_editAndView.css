@@ -1,6 +1,7 @@
-main {
-    background-color: black !important;
+/*main {
+    background-color: white !important;
     border-radius: 3% !important;
+    padding-bottom: 8em; 
 }
 
 .edit_view {
@@ -9,6 +10,9 @@ main {
     border-radius: 3%;
     padding: 1.5em;
     background-color: var(--background-color);
+}*/
+.edit_view{
+    padding: 2em;
 }
 
 /*custom navbar*/

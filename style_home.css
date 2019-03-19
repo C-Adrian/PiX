@@ -1,0 +1,189 @@
+html > body
+{
+	margin: 0;
+}
+
+main
+{
+	padding-top: calc(var(--nav-height) + var(--main-padding));
+	padding-bottom: var(--main-padding);
+	padding-right: var(--main-padding);
+	padding-left: var(--main-padding);
+}
+
+main .image_display_label
+{
+	margin-top: 0.3em;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+	margin-bottom: 0.3em;
+
+	color: var(--nav-bg-color);
+	font-family: "Trebuchet MS";
+	font-size: 2.2em;
+}
+
+main #image_display
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: stretch;
+
+	width: auto;
+}
+
+
+/* ---- IMAGE FRAME STYLE BEGIN ---- */
+
+.image_frame
+{
+	flex-grow: 0;
+	margin-left: 0.3em;
+	margin-right: 0.3em;
+}
+
+.image_frame .image_title
+{
+	margin-top: 0.2em;
+	margin-bottom: 0.3em;
+
+	font-family: "Trebuchet MS";
+	font-size: 1em;
+}
+
+.image_frame .image_object
+{
+	width: auto;
+	position: relative;
+}
+
+.image_frame img
+{
+	max-width: 25em;
+	max-height: 16em;
+	min-width: 5em;
+	min-height: 6em;
+	cursor: pointer;
+}
+
+.image_frame .image_object:hover img
+{
+
+}
+
+.image_object button
+{
+	display: none;
+	position: absolute;
+	
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+
+	font-family: "Verdana";
+	font-size: 0.85em;
+	border-style: none;
+	border-radius: 0.2em;
+	color: var(--nav-font-color);
+	cursor: pointer;
+}
+
+.image_object .download_button
+{
+	background-color: var(--nav-accent-color);
+	bottom: 0.5em;
+	left: 0.5em;
+}
+
+.image_object .remove_img_button
+{
+	background-color: var(--delete-color);
+	top: 0.5em;
+	left: 0.5em;
+}
+
+.image_object:hover button
+{
+	display: inline-block;
+}
+
+.image_frame .image_tags
+{
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
+	max-width: 16em;
+
+	color: gray;
+	font-family: "Verdana";
+	font-size: 0.8em;
+}
+
+/* ---- IMAGE FRAME STYLE END ---- */
+
+
+@media (max-width: 80em) {
+
+
+}
+
+
+@media (max-width: 55em) {
+
+main .image_display_label
+{
+	font-size: 1.5em;
+}
+
+.image_frame img
+{
+	max-width: 16em;
+	max-height: 14em;
+}
+
+}
+
+
+@media (max-width: 38em) {
+
+/*
+.image_object button
+{
+	display: flex;
+	position: relative;
+	float: right;
+	transform: translate(0, 0);
+
+	margin-top: 0.2em;
+	padding-top: 0.6em;
+	padding-bottom: 0.6em;
+	z-index: 0;
+}
+*/
+
+.image_object button
+{
+	display: inline-block;
+	position: relative;
+	transform: translate(0, 0);
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+}
+
+
+main .image_display_label
+{
+	font-size: 1.2em;
+}
+
+.image_frame img
+{
+	max-width: 100%;
+	max-height: 100%;
+}
+
+}
+

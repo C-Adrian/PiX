@@ -1,79 +1,118 @@
+
+/*custom navbar*/
+
+nav {
+    background-color: var(--nav-bg-color);
+    margin: 0;
+    padding: 0;
+    height: var(--nav-height);
+    position: fixed;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+nav>.navbar_half {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: flex-end;
+    flex-wrap: nowrap;
+    align-items: center;
+    float: right;
+}
+
+nav>.navbar_half>.clickable_item {
+    background-color: var(--nav-bg-color);
+    border-width: 0;
+    text-decoration: none;
+    font-size: 1.1em;
+    color: var(--nav-font-color);
+    font-family: "Verdana";
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    height: 100%;
+    line-height: 300%;
+}
+
+nav .clickable_item:hover {
+    border-radius: 0.2em;
+    background-color: var(--nav-accent-color);
+}
+
+
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
-		
 
-	.card{
-			border-style: solid;
-			width: 85%;
-			border-radius: 30px;
-			position: fixed;
-  			top: 50%;
-  			left: 50%;
-  			transform: translate(-50%, -50%);
-  			padding:5px;
-  			background: #303030;
-  			color:white;
-		}
-	.informatii{
-		width: 20%;
-		flex-direction: column;
-		float: left;
-		margin-left: 10px;
-		margin-bottom: 20px;
-	}
-	.card > *{
-		
+.card {
+	border-style: solid;
+	width: 85%;
+	border-radius: 30px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 5px;
+	background: #303030;
+	color: white;
+}
+
+.informatii {
+	width: 20%;
+	flex-direction: column;
+	float: left;
+	margin-left: 10px;
+	margin-bottom: 20px;
+}
+
+.card>* {
+	display: flex;
+	margin: 20px;
+}
+
+.imagine {
+	width: 60%;
+	float: right;
+	height: 100%;
+	display: block;
+}
+
+input[type=text], textarea {
+	padding: 5px;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	border-radius: 5px;
+	max-width: 100%;
+	max-height: 100px;
+}
+
+[id^="tag"] {
+	width: 50%;
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto
+}
+
+@media only screen and (max-width: 768px) {
+	nav, main {
+		width: 100%;
 		display: flex;
-  		margin:20px;
-  		
+		align-self: flex-start;
 	}
-
-	.imagine{
-		width: 60%;	
-		float: right;
-		height: 100%;
-		display: block;
-		
+	nav {
+		position: sticky;
+		top: 0;
 	}
-	input[type=text],textarea {
-    padding:5px; 
-    border:2px solid #ccc; 
-    border-radius: 5px;
-    border-radius: 5px;
-    max-width: 100%;
-    max-height: 100px;
+	body {
+		display: flex;
+		flex-direction: column;
+		align-content: space-between;
+	}
 }
-	[id^="tag"]
-	{
-		width: 50%;
-	}
-	img{
-		height: auto;
-		max-width: 100%;
-		display: block;
-    	margin-left: auto;
-    	margin-right: auto
-
-	}
-	@media only screen and (max-width: 768px){
-		nav,main{
-			width: 100%;
-			display: flex;
-			align-self: flex-start;
-		}
-		nav{
-			position: sticky;
-  			top: 0;
-		}
-
-		body{
-			display: flex;
-
-			flex-direction: column;
-			align-content: space-between;
-		}
-		
-	}
-
-

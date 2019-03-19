@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<meta charset="utf8">
-	<title>PiX - Home</title>
+	<meta charset="utf-8">
+	<title>PiX - My Images</title>
 	<meta name="description" content="PiX Home">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -19,26 +20,27 @@
 		<div id="navbar_half_left" class="navbar_half">
 			<input type="text" placeholder="Search..." class="search_box">
 			<button type="submit" class="clickable_item" id="search_button">Go</button>
-			<button type="button" class="adv_searchBtn clickable_item" onclick="hideAdvSearch()">Advanced
+			<button type="button" class="clickable_item" onclick="hideAdvSearch()">Advanced
 				search</button>
 		</div>
 		<div id="navbar_half_right" class="navbar_half">
-			<a href="" class="clickable_item">Upload </a>
-			<a href="" class="clickable_item">My images</a>
-			<a href="./Login.html" class="clickable_item">Logout</a>
+			<a href="Upload.html" class="clickable_item">Upload </a>
+			<a href="Home.html" class="clickable_item">Home</a>
+			<a href="Login.html" class="clickable_item">Logout</a>
 
 			<div class="dropdown_menu"> Menu
 				<div class="dropdown_content">
-					<button type="button" class="adv_searchBtn clickable_item" onclick="hideAdvSearch()">Advanced
+					<button type="button" class="clickable_item" onclick="hideAdvSearch()">Advanced
 						search</button>
-					<a href="" class="clickable_item">Upload </a>
-					<a href="" class="clickable_item">My images</a>
-					<a href="./Login.html" class="clickable_item">Logout</a>
+					<a href="Upload.html" class="clickable_item">Upload </a>
+					<a href="Home.html" class="clickable_item">Home</a>
+					<a href="Login.html" class="clickable_item">Logout</a>
 				</div>
 			</div>
 
 		</div>
 	</nav>
+
 	<aside class="advanced_search">
 		<h2>Advanced Search</h2>
 		<form action="search_script">
@@ -57,15 +59,23 @@
 					<input type="date" id="end_date" name="eDate">
 				</div>
 			</div>
-			<div>
+			<div id="dimension_section">
 				<p class="section_title">Dimension:</p>
-				<div>
-					<label for="search_width">Width</label>
-					<input id="search_width" type="number" placeholder="X px" max="4000" name="width">
+				<div id="min_width_div">
+					<label for="min_width">Min width</label>
+					<input id="min_width" type="number" placeholder="X px" min="0" max="4000" name="width">
 				</div>
-				<div>
-					<label for="search_height">Height</label>
-					<input id="search_height" type="number" placeholder="X px" max="3000" name="height">
+				<div id="max_width_div">
+					<label for="max_width">Max width</label>
+					<input id="max_width" type="number" placeholder="X px" min="0" max="4000" name="width">
+				</div>
+				<div id="min_height_div">
+					<label for="min_height">Min height</label>
+					<input id="min_height" type="number" placeholder="X px" min="0" max="3000" name="height">
+				</div>
+				<div id="max_height_div">
+					<label for="max_height">Max height</label>
+					<input id="max_height" type="number" placeholder="X px" min="0" max="3000" name="height">
 				</div>
 			</div>
 			<p class="section_title">Size:</p>
@@ -78,13 +88,13 @@
 
 	</aside>
 	<main>
-		<h3 class="image_display_label">Images</h3>
+		<h3 class="image_display_label">My images</h3>
 		<div id="image_display">
 
 			<div class="image_frame">
 				<h4 class="image_title">Image name</h4>
 				<div class="image_object">
-					<img src="../Images/stub_images/image1.jpg">
+					<img src="../Images/stub_images/image1.jpg" alt="image">
 					<button class="download_button">Download</button>
 					<button class="remove_img_button">Delete</button>
 				</div>
@@ -94,7 +104,7 @@
 			<div class="image_frame">
 				<h4 class="image_title">Image name</h4>
 				<div class="image_object">
-					<img src="../Images/stub_images/abstract2.jpg">
+					<img src="../Images/stub_images/abstract2.jpg" alt="image">
 					<button class="download_button">Download</button>
 					<button class="remove_img_button">Delete</button>
 				</div>
@@ -104,7 +114,7 @@
 			<div class="image_frame">
 				<h4 class="image_title">Image name</h4>
 				<div class="image_object">
-					<img src="../Images/stub_images/abstract.png">
+					<img src="../Images/stub_images/abstract.png" alt="image">
 					<button class="download_button">Download</button>
 					<button class="remove_img_button">Delete</button>
 				</div>
@@ -114,53 +124,12 @@
 			<div class="image_frame">
 				<h4 class="image_title">Image name</h4>
 				<div class="image_object">
-					<img src="../Images/stub_images/street.jpeg">
+					<img src="../Images/stub_images/street.jpeg" alt="image">
 					<button class="download_button">Download</button>
 					<button class="remove_img_button">Delete</button>
 				</div>
 				<p class="image_tags">#tag #lorem #ipsum #sample</p>
 			</div>
-
-			<div class="image_frame">
-				<h4 class="image_title">Image name</h4>
-				<div class="image_object">
-					<img src="../Images/stub_images/vaporwave.jpg">
-					<button class="download_button">Download</button>
-					<button class="remove_img_button">Delete</button>
-				</div>
-				<p class="image_tags">#tag #lorem #ipsum #sample</p>
-			</div>
-
-			<div class="image_frame">
-				<h4 class="image_title">Image name</h4>
-				<div class="image_object">
-					<img src="../Images/stub_images/field.png">
-					<button class="download_button">Download</button>
-					<button class="remove_img_button">Delete</button>
-				</div>
-				<p class="image_tags">#tag #lorem #ipsum #sample</p>
-			</div>
-
-			<div class="image_frame">
-				<h4 class="image_title">Image name</h4>
-				<div class="image_object">
-					<img src="../Images/stub_images/lake.jpg">
-					<button class="download_button">Download</button>
-					<button class="remove_img_button">Delete</button>
-				</div>
-				<p class="image_tags">#tag #lorem #ipsum #sample</p>
-			</div>
-
-			<div class="image_frame">
-				<h4 class="image_title">Image name</h4>
-				<div class="image_object">
-					<img src="../Images/stub_images/tree.jpg">
-					<button class="download_button">Download</button>
-					<button class="remove_img_button">Delete</button>
-				</div>
-				<p class="image_tags">#tag #lorem #ipsum #sample</p>
-			</div>
-
 		</div>
 	</main>
 

@@ -6,6 +6,7 @@
 	--body-color: #f9f9f9;
 	--nav-height: 3.5em;
 	--main-padding: 0.5em;
+	--delete-color: #c62525;
 }
 
 html {
@@ -24,6 +25,7 @@ main {
 
 @media (max-width: 80em) {
 	main {
-		width: 100%;
+		width: auto;
+		max-width: 100%;
 	}
 }

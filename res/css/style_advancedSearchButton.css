@@ -1,21 +1,69 @@
 .advanced_search {
-    position: absolute;
+    position: fixed;
+    margin-top: var(--nav-height);
     top: 0;
     left: 0;
     height: 100%;
     width: 21em;
     transform: translateX(-100%);
     transition: .5s;
-    background: rgb(82, 80, 80);
+    background-color: var(--nav-bg-color);
     color: #fff;
-    text-align: center;
-    border-top-right-radius: 3%;
-    border-bottom-right-radius: 3%;
+    text-align: left;
+    font-family: "Verdana";
+    padding: 1em;
+
+    opacity: 0.85;
+    z-index: 20;
+}
+
+.advanced_search *
+{
+    font-family: "Verdana";
+    display: block;
 }
 
 .advanced_search.is--open {
     transform: translateX(0);
 }
+
+.advanced_search h2
+{
+    font-size: 1em;
+    margin-bottom: 2em;
+}
+
+.advanced_search .section_title
+{
+    font-size: 1em;
+    margin-top: 2em;
+}
+
+.advanced_search label
+{
+    font-size: 0.85em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.advanced_search > #dimension_section
+{
+    
+}
+
+.advanced_search #min_width_div, #min_height_div
+{
+    display: inline-block;
+    width: 48%;
+}
+
+.advanced_search #max_width_div, #max_height_div
+{
+    display: inline-block;
+    float: right;
+    width: 48%;
+}
+
 
 .advanced_search a {
     color: #fff;
@@ -24,9 +72,9 @@
     margin: 1em 0;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 50em) {
     .menu {
-        width: 300px;
+        width: 25em;
     }
 }
 @media (max-width: 55em) {
@@ -35,34 +83,31 @@
     }
 }
 .advanced_search #btn_search {
-    border-radius: 0.4em;
-    background-color: var(--nav-bg-color);
-    padding: 0.5em;
+    width: 8em;
+    font-size: 1.1em;
+    height: 2.7em;
+    margin-top: 2em;
+    background-color: var(--nav-accent-color);
+    border-width: 0;
+    border-radius: 0.2em;
     color: white;
-    font-family: "Book Antiqua";
-    text-align: center ;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .advanced_search #btn_search:hover {
-    border-radius: 0.4em;
     background-color: var(--nav-accent-color);
-    padding: 0.5em;
 }
 
 .advanced_search input {
-	width: 12em;
-	font-size: 1em;
-	height: 1.5em;
-	margin-left: 0.5em;
-	margin-right: 0.5em;
+	width: calc(100% - 0.6em);
+    height: 2.5em;
+	font-size: 0.85em;
+    color: gray;
 	margin-top: auto;
 	margin-bottom: auto;
 	padding: 0.3em;
 	background-color: white;
 	border-width: 0;
     border-radius: 0.2em;
-    
-}
-.advanced_search>form div{
-    padding: 0.6em;
 }

@@ -9,3 +9,6 @@ function hideAdvSearch() {
         advSearch.classList.add('is--open');
     }
 }
+function Redirect() {
+    window.location="EditAndViewPage.html";
+ }

@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<meta charset="utf8">
+	<meta charset="UTF-8">
 	<title>PiX - Home</title>
 	<meta name="description" content="PiX Home">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,29 +48,30 @@
 				<input type="text" name="tags_list" id="tags_search" placeholder="Add tags...">
 			</div>
 			<div>
-				<p>Selecteaza intervalul in care a fost facuta fotografia:</p>
+				<p class="section_title">Date uploaded:</p>
 				<div>
-					<label for="start_date">Nu mai veche de:</label>
+					<label for="start_date">No older than</label>
 					<input type="date" id="start_date" name="sDate" min="1970-01-01">
 				</div>
 				<div>
-					<label for="end_date">Nu mai noua de:</label>
+					<label for="end_date">No newer than</label>
 					<input type="date" id="end_date" name="eDate">
 				</div>
 			</div>
 			<div>
-				<p>Selecteaza dimensiunile:</p>
+				<p class="section_title">Dimension:</p>
 				<div>
-					<label for="search_height">Lungime:</label>
-					<input id="search_height" type="number" placeholder="X px" max="3000" name="height">
-				</div>
-				<div>
-					<label for="search_width">Latime:</label>
+					<label for="search_width">Width</label>
 					<input id="search_width" type="number" placeholder="X px" max="4000" name="width">
 				</div>
+				<div>
+					<label for="search_height">Height</label>
+					<input id="search_height" type="number" placeholder="X px" max="3000" name="height">
+				</div>
 			</div>
+			<p class="section_title">Size:</p>
 			<div>
-				<label for="size">Dimensiunea maxima:</label>
+				<label for="size">Maximum Size</label>
 				<input type="number" id="size" placeholder="X MB" max="10" name="size">
 			</div>
 			<button id="btn_search">Go</button>
@@ -83,8 +85,9 @@
 			<div class="image_frame">
 				<h4 class="image_title">Image name</h4>
 				<div class="image_object">
-					<img src="../Images/stub_images/image1.jpg">
-					<button>Download</button>
+					<img src="../Images/stub_images/image1.jpg" alt="Not available" onclick="Redirect();">
+					<button class="download_button">Download</button>
+					<button class="remove_img_button">Delete</button>
 				</div>
 				<p class="image_tags">#tag #lorem #ipsum #sample</p>
 			</div>
@@ -92,8 +95,9 @@
 			<div class="image_frame">
 				<h4 class="image_title">Image name</h4>
 				<div class="image_object">
-					<img src="../Images/stub_images/abstract2.jpg">
-					<button>Download</button>
+					<img src="../Images/stub_images/abstract2.jpg" alt="Not available" onclick="Redirect();">
+					<button class="download_button">Download</button>
+					<button class="remove_img_button">Delete</button>
 				</div>
 				<p class="image_tags">#tag #lorem #ipsum #sample</p>
 			</div>
@@ -101,8 +105,9 @@
 			<div class="image_frame">
 				<h4 class="image_title">Image name</h4>
 				<div class="image_object">
-					<img src="../Images/stub_images/abstract.png">
-					<button>Download</button>
+					<img src="../Images/stub_images/abstract.png" alt="Not available" onclick="Redirect();">
+					<button class="download_button">Download</button>
+					<button class="remove_img_button">Delete</button>
 				</div>
 				<p class="image_tags">#tag #lorem #ipsum #sample</p>
 			</div>
@@ -110,8 +115,9 @@
 			<div class="image_frame">
 				<h4 class="image_title">Image name</h4>
 				<div class="image_object">
-					<img src="../Images/stub_images/street.jpeg">
-					<button>Download</button>
+					<img src="../Images/stub_images/street.jpeg" alt="Not available" onclick="Redirect();">
+					<button class="download_button">Download</button>
+					<button class="remove_img_button">Delete</button>
 				</div>
 				<p class="image_tags">#tag #lorem #ipsum #sample</p>
 			</div>
@@ -119,8 +125,9 @@
 			<div class="image_frame">
 				<h4 class="image_title">Image name</h4>
 				<div class="image_object">
-					<img src="../Images/stub_images/vaporwave.jpg">
-					<button>Download</button>
+					<img src="../Images/stub_images/vaporwave.jpg" alt="Not available" onclick="Redirect();">
+					<button class="download_button">Download</button>
+					<button class="remove_img_button">Delete</button>
 				</div>
 				<p class="image_tags">#tag #lorem #ipsum #sample</p>
 			</div>
@@ -128,8 +135,9 @@
 			<div class="image_frame">
 				<h4 class="image_title">Image name</h4>
 				<div class="image_object">
-					<img src="../Images/stub_images/field.png">
-					<button>Download</button>
+					<img src="../Images/stub_images/field.png" alt="Not available" onclick="Redirect();">
+					<button class="download_button">Download</button>
+					<button class="remove_img_button">Delete</button>
 				</div>
 				<p class="image_tags">#tag #lorem #ipsum #sample</p>
 			</div>
@@ -137,8 +145,9 @@
 			<div class="image_frame">
 				<h4 class="image_title">Image name</h4>
 				<div class="image_object">
-					<img src="../Images/stub_images/lake.jpg">
-					<button>Download</button>
+					<img src="../Images/stub_images/lake.jpg" alt="Not available" onclick="Redirect();">
+					<button class="download_button">Download</button>
+					<button class="remove_img_button">Delete</button>
 				</div>
 				<p class="image_tags">#tag #lorem #ipsum #sample</p>
 			</div>
@@ -146,8 +155,9 @@
 			<div class="image_frame">
 				<h4 class="image_title">Image name</h4>
 				<div class="image_object">
-					<img src="../Images/stub_images/tree.jpg">
-					<button>Download</button>
+					<img src="../Images/stub_images/tree.jpg" alt="Not available" onclick="Redirect();">
+					<button class="download_button">Download</button>
+					<button class="remove_img_button">Delete</button>
 				</div>
 				<p class="image_tags">#tag #lorem #ipsum #sample</p>
 			</div>

@@ -55,6 +55,7 @@ main #image_display
 .image_frame .image_object
 {
 	width: auto;
+	position: relative;
 }
 
 .image_frame img
@@ -66,17 +67,13 @@ main #image_display
 	cursor: pointer;
 }
 
-.image_frame .image_object:hover img
-{
 
-}
 
 .image_object button
 {
 	display: none;
 	position: absolute;
-	transform: translate(0.5em, calc(-100% - 0.5em));
-
+	
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 	padding-top: 0.3em;
@@ -86,14 +83,27 @@ main #image_display
 	font-size: 0.85em;
 	border-style: none;
 	border-radius: 0.2em;
-	background-color: var(--nav-accent-color);
 	color: var(--nav-font-color);
 	cursor: pointer;
 }
 
+.image_object .download_button
+{
+	background-color: var(--nav-accent-color);
+	bottom: 0.5em;
+	left: 0.5em;
+}
+
+.image_object .remove_img_button
+{
+	background-color: var(--delete-color);
+	top: 0.5em;
+	left: 0.5em;
+}
+
 .image_object:hover button
 {
-	display: flex;
+	display: inline-block;
 }
 
 .image_frame .image_tags
@@ -134,6 +144,7 @@ main .image_display_label
 
 @media (max-width: 38em) {
 
+/*
 .image_object button
 {
 	display: flex;
@@ -146,6 +157,19 @@ main .image_display_label
 	padding-bottom: 0.6em;
 	z-index: 0;
 }
+*/
+
+.image_object button
+{
+	display: inline-block;
+	position: relative;
+	transform: translate(0, 0);
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+}
+
 
 main .image_display_label
 {

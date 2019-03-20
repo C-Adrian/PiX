@@ -67,7 +67,10 @@ main #image_display
 	cursor: pointer;
 }
 
+.image_frame .image_object:hover img
+{
 
+}
 
 .image_object button
 {
@@ -144,7 +147,6 @@ main .image_display_label
 
 @media (max-width: 38em) {
 
-/*
 .image_object button
 {
 	display: inline-block;
@@ -163,19 +165,6 @@ main .image_display_label
 {
 	float: right;
 }
-*/
-
-.image_object button
-{
-	display: inline-block;
-	position: relative;
-	transform: translate(0, 0);
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
-}
-
 
 main .image_display_label
 {
@@ -189,4 +178,3 @@ main .image_display_label
 }
 
 }
-

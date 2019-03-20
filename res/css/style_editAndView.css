@@ -190,3 +190,22 @@ nav .clickable_item:hover {
     color: white;
     opacity: 0.4;
 }
+@media only screen and (max-width:400px){
+    .edit_view{
+        padding: 0em;
+    }
+    #left {
+        float: left;
+        width: 70%;
+        height: auto;
+    }
+    
+    #right {
+        float: right;
+        width: 25%;
+        height: auto;
+        padding-top: 0em;
+    }
+   
+    
+}

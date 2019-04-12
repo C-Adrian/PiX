@@ -48,12 +48,14 @@ nav .clickable_item:hover {
 
 .card {
 	border-style: solid;
+	overflow: auto;
+
 	width: 85%;
 	border-radius: 30px;
-	position: fixed;
+
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+
 	padding: 5px;
 	background: #303030;
 	color: white;
@@ -65,6 +67,7 @@ nav .clickable_item:hover {
 	float: left;
 	margin-left: 10px;
 	margin-bottom: 20px;
+	padding-top:4em;
 }
 
 .card>* {
@@ -77,6 +80,8 @@ nav .clickable_item:hover {
 	float: right;
 	height: 100%;
 	display: block;
+	padding-top:4em;
+
 }
 
 input[type=text], textarea {
@@ -114,5 +119,19 @@ img {
 		display: flex;
 		flex-direction: column;
 		align-content: space-between;
+	}
+}
+
+@media only screen and (max-width:400px)
+{
+	.card
+	{
+		flex-direction: column;
+		
+	
+	}
+	.informatii, .imagine{
+		width: auto;
+		padding-top: 0em;
 	}
 }

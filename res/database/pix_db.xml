@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.8.5
+- https://www.phpmyadmin.net
+-
+- Gazdă: 127.0.0.1
+- Timp de generare: mai 02, 2019 la 02:30 PM
+- Versiune server: 10.1.38-MariaDB
+- Versiune PHP: 7.3.3
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="pix_db" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="exifinfo">
+                CREATE TABLE `exifinfo` (
+                  `imageID` int(11) NOT NULL,
+                  `creationDate` date NOT NULL,
+                  `dimension` int(11) NOT NULL,
+                  `size` int(11) NOT NULL,
+                  `title` varchar(15) NOT NULL,
+                  `description` text NOT NULL,
+                  `tags` varchar(30) NOT NULL,
+                  KEY `imageID` (`imageID`),
+                  CONSTRAINT `exifinfo_ibfk_1` FOREIGN KEY (`imageID`) REFERENCES `images` (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="images">
+                CREATE TABLE `images` (
+                  `id` int(11) NOT NULL,
+                  `userID` int(11) NOT NULL,
+                  `localPath` varchar(50) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `userID` (`userID`),
+                  CONSTRAINT `images_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="users">
+                CREATE TABLE `users` (
+                  `id` int(11) NOT NULL,
+                  `username` varchar(30) NOT NULL,
+                  `password` varchar(30) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Bază de date: 'pix_db'
+    -->
+    <database name="pix_db">
+        <!-- Tabel exifinfo -->
+        <!-- Tabel images -->
+        <!-- Tabel users -->
+    </database>
+</pma_xml_export>

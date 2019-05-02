@@ -5,7 +5,7 @@
 - https://www.phpmyadmin.net
 -
 - Gazdă: 127.0.0.1
-- Timp de generare: mai 02, 2019 la 02:30 PM
+- Timp de generare: mai 02, 2019 la 09:01 PM
 - Versiune server: 10.1.38-MariaDB
 - Versiune PHP: 7.3.3
 -->
@@ -43,8 +43,9 @@
                 CREATE TABLE `users` (
                   `id` int(11) NOT NULL,
                   `username` varchar(30) NOT NULL,
-                  `password` varchar(30) NOT NULL,
-                  PRIMARY KEY (`id`)
+                  `passw` varchar(30) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `username` (`username`)
                 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
             </pma:table>
         </pma:database>
@@ -57,5 +58,25 @@
         <!-- Tabel exifinfo -->
         <!-- Tabel images -->
         <!-- Tabel users -->
+        <table name="users">
+            <column name="id">1</column>
+            <column name="username">iulian</column>
+            <column name="passw">1234</column>
+        </table>
+        <table name="users">
+            <column name="id">2</column>
+            <column name="username">iulian2</column>
+            <column name="passw">123456</column>
+        </table>
+        <table name="users">
+            <column name="id">3</column>
+            <column name="username">iulian3</column>
+            <column name="passw">123456</column>
+        </table>
+        <table name="users">
+            <column name="id">4</column>
+            <column name="username">iulian1</column>
+            <column name="passw">123456</column>
+        </table>
     </database>
 </pma_xml_export>

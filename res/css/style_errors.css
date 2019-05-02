@@ -1,0 +1,25 @@
+.notLogged
+{
+    background-image: url("../Images/error.jpg");
+    background-repeat: no-repeat;
+    background-size: 1000px 550px;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#notLogged {
+    color: red;
+    margin: 0;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-size: 350%;
+
+}
+.loginErrors
+{
+    color: red;
+    font-style: italic;
+}

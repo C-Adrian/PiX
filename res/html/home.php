@@ -102,7 +102,6 @@ if (isset($_SESSION["username"])) :
 					<div class="image_object">
 						<img src="../Images/stub_images/image1.jpg" alt="Not available" onclick="Redirect();">
 						<button class="download_button">Download</button>
-
 					</div>
 					<p class="image_tags">#tag #lorem #ipsum #sample</p>
 				</div>

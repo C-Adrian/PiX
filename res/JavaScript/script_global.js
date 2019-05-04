@@ -10,5 +10,6 @@ function hideAdvSearch() {
     }
 }
 function Redirect() {
-    window.location="EditAndViewPage.html";
+    document.cookie = "imageId=1; expires=0; path=/";
+    window.location="EditAndViewPage.php";
  }

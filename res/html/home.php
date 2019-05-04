@@ -1,6 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["username"])) :
+	setcookie("filteredImg", 1, time(), "/");
 ?>
 
 

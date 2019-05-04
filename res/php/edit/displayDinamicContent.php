@@ -53,7 +53,7 @@ function getImage($imageID)
     array_push($result, getImageTitle($imageID));
     array_push($result, getImageDescription($imageID));
     if (isset($_COOKIE["filteredImg"])) {
-        $path="../Images/temp/".$_SESSION["username"]."/temp.jpg";
+        $path="../Images/temp/".$_SESSION["username"]."/temp".$_COOKIE["imageId"].".".$_COOKIE["filteredImg"];
         array_push($result,$path);
     } else {
         array_push($result, getImagePath($imageID));

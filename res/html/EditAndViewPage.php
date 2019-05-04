@@ -2,7 +2,6 @@
 session_start();
 if (isset($_SESSION["username"])) :
     include_once("../php/edit/displayDinamicContent.php");
-    
     ?>
 
     <!DOCTYPE html>
@@ -21,8 +20,8 @@ if (isset($_SESSION["username"])) :
     <body>
         <nav id="navbar">
             <div id="navbar_half_right" class="navbar_half">
-                <a href="Home.html" class="clickable_item">Home</a>
-                <a href="./Login.html" class="clickable_item">Logout</a>
+                <a href="Home.php" class="clickable_item">Home</a>
+                <a href="Login.php" class="clickable_item">Logout</a>
             </div>
         </nav>
         <main>
@@ -68,9 +67,9 @@ if (isset($_SESSION["username"])) :
                                     <label for="IMG_FILTER_EMBOSS">Emboss Filter</label>
                                 </div>
                                 <div class="filter">
-                                    <img src="../Images/stub_images/summer_image1.jpg" alt="IMG_FILTER_GAUSSIAN_BLUR">
-                                    <input id="IMG_FILTER_GAUSSIAN_BLUR" type="checkbox" name="filter" value="IMG_FILTER_GAUSSIAN_BLUR">
-                                    <label for="IMG_FILTER_GAUSSIAN_BLUR">Gaussian Blur Filter</label>
+                                    <img src="../Images/stub_images/summer_image1.jpg" alt="IMG_FILTER_MEAN_REMOVAL">
+                                    <input id="IMG_FILTER_MEAN_REMOVAL" type="checkbox" name="filter" value="IMG_FILTER_MEAN_REMOVAL">
+                                    <label for="IMG_FILTER_MEAN_REMOVAL">Mean Remove Filter</label>
                                 </div>
                                 <div class="filter">
                                     <img src="../Images/stub_images/no_filter_image1.jpg" alt="no_filter">
@@ -106,8 +105,8 @@ if (isset($_SESSION["username"])) :
                         -->
                     </div>
                     <div>
-                        <form id="download_form" action="download_script">
-                            <button class="footer_btn" type="submit">Salveaza ca:</button>
+                        <form id="download_form" action="../php/edit/edit.controller.php" method="GET">
+                            <button name="submit" value="download" class="footer_btn" type="submit">Salveaza ca:</button>
                             <select class="save_dropdown" name="download">
                                 <option value="jpeg">JPEG</option>
                                 <option value="bmp">BMP</option>

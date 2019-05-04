@@ -14,56 +14,84 @@ function getImagePath($imageID)
     $localPath = $localPath["localPath"];
     return $localPath;
 }
-
-function filter($filter,$path)
+function filter($filter, $path, $ext)
 {
-    if($filter=="IMG_FILTER_NEGATE")
-    {
-        $img=imagecreatefromjpeg($path);
-        imagefilter($img,IMG_FILTER_NEGATE);
-        imagejpeg($img,$path);
+    if ($ext == "jpg") {
+        $img = imagecreatefromjpeg($path);
+        imagefilter($img, $filter);
+        imagejpeg($img, $path);
         imagedestroy($img);
     }
-    if($filter=="IMG_FILTER_GRAYSCALE")
-    {
-        $img=imagecreatefromjpeg($path);
-        imagefilter($img,IMG_FILTER_GRAYSCALE);
-        imagejpeg($img,$path);
+    if ($ext == "bmp") {
+        $img = imagecreatefrombmp($path);
+        imagefilter($img, $filter);
+        imagebmp($img, $path);
         imagedestroy($img);
     }
-    if($filter=="IMG_FILTER_EMBOSS")
-    {
-        $img=imagecreatefromjpeg($path);
-        imagefilter($img,IMG_FILTER_EMBOSS);
-        imagejpeg($img,$path);
+    if ($ext == "png") {
+        $img = imagecreatefrompng($path);
+        imagefilter($img, $filter);
+        imagepng($img, $path);
         imagedestroy($img);
-    }
-    if($filter=="IMG_FILTER_GAUSSIAN_BLUR")
-    {
-        $img=imagecreatefromjpeg($path);
-        imagefilter($img,IMG_FILTER_GAUSSIAN_BLUR);
-        imagejpeg($img,$path);
-        imagedestroy($img);
-    }
-    if($filter=="no_filter")
-    {
-        $imagePath = getImagePath($_COOKIE["imageId"]);
-        copy("../" . $imagePath, $path);
     }
 }
-
 function applyFilter($filter)
 {
-    $path = "../../Images/temp/" . $_SESSION["username"];
-    if (!file_exists($path . "/temp.jpg")) {
-        mkdir($path);
-        $imagePath = getImagePath($_COOKIE["imageId"]);
-        copy("../" . $imagePath, $path . "/temp.jpg");
-        filter($filter,$path . "/temp.jpg");
-    }
-    else{
-        filter($filter,$path . "/temp.jpg");
-    }
     
-    setcookie("filteredImg", 1, time() + 3600, "/");
+    $path = "../../Images/temp/" . $_SESSION["username"];
+    if (!file_exists($path)) {
+        mkdir($path);
+    }
+
+    $imagePath = getImagePath($_COOKIE["imageId"]);
+    $ext = pathinfo($imagePath, PATHINFO_EXTENSION);
+    copy("../" . $imagePath, $path . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+    //filter($filter, $path . "/temp." . $ext, $ext);
+
+    setcookie("filteredImg", $ext, time() + 3600, "/");
+    if ($filter == "IMG_FILTER_NEGATE") {
+        filter(IMG_FILTER_NEGATE, $path . "/temp" . $_COOKIE["imageId"] . "." . $ext, $ext);
+    }
+    if ($filter == "IMG_FILTER_GRAYSCALE") {
+        filter(IMG_FILTER_GRAYSCALE, $path . "/temp" . $_COOKIE["imageId"] . "." . $ext, $ext);
+    }
+    if ($filter == "IMG_FILTER_EMBOSS") {
+        filter(IMG_FILTER_EMBOSS, $path . "/temp" . $_COOKIE["imageId"] . "." . $ext, $ext);
+    }
+    if ($filter == "IMG_FILTER_MEAN_REMOVAL") {
+        filter(IMG_FILTER_MEAN_REMOVAL, $path . "/temp" . $_COOKIE["imageId"] . "." . $ext, $ext);
+    }
+    if ($filter == "no_filter") {
+        $imagePath = getImagePath($_COOKIE["imageId"]);
+        copy("../" . $imagePath, $path . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+        setcookie("filteredImg", 1, time(), "/");
+    }
+}
+function download($extension)
+{
+    $imagePath = getImagePath($_COOKIE["imageId"]);
+    if (!isset($_COOKIE["filteredImg"])) {
+        if ($extension == "png") {
+            imagepng(imagecreatefromstring(file_get_contents("../" . $imagePath)), "D:\PiX_Downloads\downloaded_image.png");
+        }
+        if ($extension == "jpeg") {
+            imagejpeg(imagecreatefromstring(file_get_contents("../" . $imagePath)), "D:\PiX_Downloads\downloaded_image.jpg");
+        }
+        if ($extension == "bmp") {
+            imagebmp(imagecreatefromstring(file_get_contents("../" . $imagePath)), "D:\PiX_Downloads\downloaded_image.bmp");
+        }
+    } else {
+        $ext = pathinfo($imagePath, PATHINFO_EXTENSION);
+        echo "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext;
+        //imagepng(imagecreatefromstring(file_get_contents("../../Images/temp/temp".$_COOKIE["imageId"]."." . $ext)), "output.png");
+        if ($extension == "png") {
+            imagepng(imagecreatefromstring(file_get_contents("../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext)), "D:\PiX_Downloads\downloaded_image.png");
+        }
+        if ($extension == "jpeg") {
+            imagejpeg(imagecreatefromstring(file_get_contents("../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext)), "D:\PiX_Downloads\downloaded_image.jpg");
+        }
+        if ($extension == "bmp") {
+            imagebmp(imagecreatefromstring(file_get_contents("../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext)), "D:\PiX_Downloads\downloaded_image.bmp");
+        }
+    }
 }

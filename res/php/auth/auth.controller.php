@@ -10,7 +10,8 @@ if ($_POST["submit"] == "login") {
     } else {
         header("location: ../../html/Login.php");
     }
-} else {
+} else 
+ {
     $resultOK = register($_POST["username"], $_POST["password"], $_POST["repassword"]);
     if ($resultOK) {
         header("location: ../../html/home.php");

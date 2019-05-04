@@ -30,7 +30,7 @@ if (isset($_SESSION["username"])) :
 					search</button>
 			</div>
 			<div id="navbar_half_right" class="navbar_half">
-				<a href="Upload.html" class="clickable_item">Upload </a>
+				<a href="Upload.php" class="clickable_item">Upload </a>
 				<a href="my_images.html" class="clickable_item">My images</a>
 				<a href="Login.html" class="clickable_item">Logout</a>
 
@@ -38,7 +38,7 @@ if (isset($_SESSION["username"])) :
 					<div class="dropdown_content">
 						<button type="button" class="clickable_item" onclick="hideAdvSearch()">Advanced
 							search</button>
-						<a href="Upload.html" class="clickable_item">Upload </a>
+						<a href="Upload.php" class="clickable_item">Upload </a>
 						<a href="my_images.html" class="clickable_item">My images</a>
 						<a href="Login.html" class="clickable_item">Logout</a>
 					</div>

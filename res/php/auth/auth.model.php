@@ -78,4 +78,5 @@ function register($username, $password, $repassword)
         return false;
     }
 }
+
 ?>

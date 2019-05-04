@@ -61,7 +61,7 @@ nav .clickable_item:hover {
 	color: white;
 }
 
-.informatii {
+.informatii  {
 	width: 20%;
 	flex-direction: column;
 	float: left;

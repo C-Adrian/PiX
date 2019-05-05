@@ -101,7 +101,7 @@ function upload($fisier_ales,$fisiere_alese,$tag1,$tag2,$tag3,$tag4,$tag5,$titlu
         $insertStatement -> close();
         
     }
-        if($fisiere_alese[name]!=NULL)
+        if($fisiere_alese[name][0]!=NULL)
     {
         $total = count($fisiere_alese[name]);
         for( $i=0 ; $i < $total ; $i++ )

@@ -36,7 +36,7 @@ if (isset($_SESSION["username"])) :
 		?>
 
 			<label for="fisiere">Sau mai multe imagini</label>
-			<input type="file" multiple="multiple" name="imagini_alese" id="fisiere">
+			<input type="file" multiple="multiple" name="imagini_alese[]" id="fisiere">
 
 
 			<?php

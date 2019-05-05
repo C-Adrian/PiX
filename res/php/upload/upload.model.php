@@ -24,6 +24,7 @@ function upload($fisier_ales,$fisiere_alese,$tag1,$tag2,$tag3,$tag4,$tag5,$titlu
         setcookie("NoDescriere", 1, time() + 1, "/");
         return false;
     }
+    $connection = connectToDatabase();
     if($fisier_ales[name]!=NULL)
     {
         
@@ -66,7 +67,7 @@ function upload($fisier_ales,$fisiere_alese,$tag1,$tag2,$tag3,$tag4,$tag5,$titlu
         $size=$fisier_ales[size];
         
         
-        $connection = connectToDatabase();
+        
         $checkID = $connection->prepare("SELECT id FROM users WHERE username = ?");
         $checkID->bind_param("s", $_SESSION["username"] );
         $checkID->execute();
@@ -100,8 +101,85 @@ function upload($fisier_ales,$fisiere_alese,$tag1,$tag2,$tag3,$tag4,$tag5,$titlu
         $insertStatement -> close();
         
     }
-    else
+        if($fisiere_alese[name][0]!=NULL)
     {
+        $total = count($fisiere_alese[name]);
+        for( $i=0 ; $i < $total ; $i++ )
+        {
+            $ext = pathinfo($fisiere_alese[name][$i], PATHINFO_EXTENSION);
+        $data=date(DATE_RFC2822);
+        if($tag1[0]!='#')
+        $tags='#'.$tag1;
+        else
+        $tags=$tag1;
+        if($tag2)
+        {
+            if($tag2[0]!='#')
+            $tags=$tags.' #'.$tag2;
+            else
+            $tags=$tags.' '.$tag2;
+        }
+        if($tag3)
+        {
+            if($tag3[0]!='#')
+            $tags=$tags.' #'.$tag3;
+            else
+            $tags=$tags.' '.$tag3;
+        }
+        if($tag4)
+        {
+            if($tag4[0]!='#')
+            $tags=$tags.' #'.$tag4;
+            else
+            $tags=$tags.' '.$tag4;
+
+        }
+        if($tag5)
+        {
+            if($tag5[0]!='#')
+            $tags=$tags.' #'.$tag5;
+            else
+            $tags=$tags.' '.$tag5;
+
+        }
+        $size=$fisiere_alese[size][$i];
+        
+        
+        
+        $checkID = $connection->prepare("SELECT id FROM users WHERE username = ?");
+        $checkID->bind_param("s", $_SESSION["username"] );
+        $checkID->execute();
+        $userID = $checkID->get_result();
+        $col1 = $userID->fetch_assoc();
+        $checkID -> close();
+        $userID=(string)$col1['id'];
+        $checkImgID = $connection->prepare("SELECT * FROM images where id= (SELECT MAX(id) from images)");
+        $checkImgID ->execute();
+        $ImgId= $checkImgID->get_result();
+        $col2=$ImgId->fetch_assoc();
+        $checkImgID->close();
+        $ImgId=(string)((int)$col2['id']+1);
+        
+
+        move_uploaded_file($fisiere_alese['tmp_name'][$i],'../../Images/DataBaseImages/'.$ImgId.'.'.$ext);
+        list($width, $height, $t, $attr) = getimagesize('../../Images/DataBaseImages/'.$ImgId.'.'.$ext);
+        $dimensiune=(string)$width."x".(string)$height; 
+        $localpath='../../Images/DataBaseImages/'.$ImgId.'.'.$ext;
+        $localpath=(string)$localpath;
+        $localpath=substr($localpath,3);
+
+        $insertStatement= $connection->prepare("INSERT INTO images VALUES(?,?,?)");
+        $insertStatement -> bind_param("sss", $ImgId ,$userID ,$localpath);
+        $insertStatement -> execute();
+        $insertStatement -> close();
+        
+        $insertStatement = $connection -> prepare("INSERT INTO exifinfo VALUES(?, ?, ?, ?, ?, ?, ?)");
+        $insertStatement -> bind_param("sssssss", $ImgId ,$data,$dimensiune,$size,$titlu,$descriere,$tags);
+        $insertStatement -> execute();
+        $insertStatement -> close();
+            
+        }
+        
 
     }
     return true;

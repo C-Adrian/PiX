@@ -37,7 +37,7 @@ function filter($filter, $path, $ext)
 }
 function applyFilter($filter)
 {
-    
+
     $path = "../../Images/temp/" . $_SESSION["username"];
     if (!file_exists($path)) {
         mkdir($path);
@@ -94,4 +94,99 @@ function download($extension)
             imagebmp(imagecreatefromstring(file_get_contents("../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext)), "D:\PiX_Downloads\downloaded_image.bmp");
         }
     }
+}
+function rotate($direction)
+{
+    $degrees = 90;
+    $imagePath = getImagePath($_COOKIE["imageId"]);
+    $ext = pathinfo($imagePath, PATHINFO_EXTENSION);
+    if (!isset($_COOKIE["filteredImg"])) {
+        copy("../" . $imagePath, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+        setcookie("filteredImg", $ext, time() + 3600, "/");
+        $img = imagecreatefromstring(file_get_contents("../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext));
+        if ($direction == "right") {
+            $degrees = -$degrees;
+        }
+        $rotateImg = imagerotate($img, $degrees, 0);
+        switch ($ext): case "jpg":
+                imagejpeg($rotateImg, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+                break;
+
+            case "png":
+                imagepng($rotateImg, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+
+                break;
+
+            case "bmp":
+                imagebmp($rotateImg, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+
+                break;
+        endswitch;
+    } else {
+        $img = imagecreatefromstring(file_get_contents("../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext));
+        if ($direction == "right") {
+            $degrees = -$degrees;
+        }
+        $rotateImg = imagerotate($img, $degrees, 0);
+        switch ($ext): case "jpg":
+                imagejpeg($rotateImg, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+                break;
+
+            case "png":
+                imagepng($rotateImg, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+
+                break;
+
+            case "bmp":
+                imagebmp($rotateImg, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+
+                break;
+        endswitch;
+    }
+}
+function resize($width, $height)
+{
+    $imagePath = getImagePath($_COOKIE["imageId"]);
+    $ext = pathinfo($imagePath, PATHINFO_EXTENSION);
+    if (!isset($_COOKIE["filteredImg"])) {
+        copy("../" . $imagePath, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+        setcookie("filteredImg", $ext, time() + 3600, "/");
+        $img = imagecreatefromstring(file_get_contents("../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext));
+        $dst = imagescale($img, $width, $height);
+        switch ($ext): case "jpg":
+                imagejpeg($dst, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+                break;
+
+            case "png":
+                imagepng($dst, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+
+                break;
+
+            case "bmp":
+                imagebmp($dst, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+
+                break;
+        endswitch;
+    } else {
+        $img = imagecreatefromstring(file_get_contents("../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext));
+        $dst = imagescale($img, $width, $height);
+        switch ($ext): case "jpg":
+                imagejpeg($dst, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+                break;
+
+            case "png":
+                imagepng($dst, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+
+                break;
+
+            case "bmp":
+                imagebmp($dst, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
+
+                break;
+        endswitch;
+    }
+}
+function deleteImage($imgId)
+{
+
 }

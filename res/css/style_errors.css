@@ -1,5 +1,4 @@
-.notLogged
-{
+.notLogged {
     background-image: url("../Images/error.jpg");
     background-repeat: no-repeat;
     background-size: 1000px 550px;
@@ -16,10 +15,10 @@
     margin-right: -50%;
     transform: translate(-50%, -50%);
     font-size: 350%;
-
 }
-.loginErrors
-{
+
+.loginErrors, #wrongDimension, #usr_pswNotMatch {
     color: red;
     font-style: italic;
+    font-size: 1.2em;
 }

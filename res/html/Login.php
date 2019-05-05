@@ -5,6 +5,7 @@
 	<title>Login</title>
 	<link rel="stylesheet" type="text/css" href="../css/style_loginAndRegister.css">
 	<link rel="stylesheet" type="text/css" href="../css/style_global.css">
+	<link rel="stylesheet" type="text/css" href="../css/style_errors.css">
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +31,7 @@
 		</form>
 		<?php
 		if (isset($_COOKIE['usr_pswNotMatch'])) {
-			echo '<p style="color: red"> Combinatie parola, username incorecta <p>';
+			echo '<p id="usr_pswNotMatch"> Combinatie parola, username incorecta!<p>';
 		}
 		?>
 		<br>

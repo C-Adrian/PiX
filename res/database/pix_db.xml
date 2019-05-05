@@ -4,10 +4,10 @@
 - version 4.8.5
 - https://www.phpmyadmin.net
 -
-- Host: 127.0.0.1
-- Generation Time: May 04, 2019 at 05:27 PM
-- Server version: 10.1.38-MariaDB
-- PHP Version: 7.3.3
+- Gazdă: 127.0.0.1
+- Timp de generare: mai 05, 2019 la 03:29 PM
+- Versiune server: 10.1.38-MariaDB
+- Versiune PHP: 7.3.3
 -->
 
 <pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
@@ -25,6 +25,7 @@
                   `title` varchar(15) NOT NULL,
                   `description` text NOT NULL,
                   `tags` varchar(30) NOT NULL,
+                  UNIQUE KEY `imageID_2` (`imageID`),
                   KEY `imageID` (`imageID`),
                   CONSTRAINT `exifinfo_ibfk_1` FOREIGN KEY (`imageID`) REFERENCES `images` (`id`)
                 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -52,78 +53,11 @@
     </pma:structure_schemas>
 
     <!--
-    - Database: 'pix_db'
+    - Bază de date: 'pix_db'
     -->
     <database name="pix_db">
-        <!-- Table exifinfo -->
-        <table name="exifinfo">
-            <column name="imageID">1</column>
-            <column name="creationDate">Sat, 04 May 2019 17:07:52 +0200</column>
-            <column name="dimension">160x106</column>
-            <column name="size">15280</column>
-            <column name="title">3434</column>
-            <column name="description">32413</column>
-            <column name="tags">#42331 #4353 #3323 #431 #321</column>
-        </table>
-        <table name="exifinfo">
-            <column name="imageID">2</column>
-            <column name="creationDate">Sat, 04 May 2019 17:15:29 +0200</column>
-            <column name="dimension">1920x1195</column>
-            <column name="size">192233</column>
-            <column name="title">dsafsdfa</column>
-            <column name="description">fdfsasdfa</column>
-            <column name="tags">#dfafds</column>
-        </table>
-        <table name="exifinfo">
-            <column name="imageID">3</column>
-            <column name="creationDate">Sat, 04 May 2019 17:16:12 +0200</column>
-            <column name="dimension">160x106</column>
-            <column name="size">15280</column>
-            <column name="title">ffffff</column>
-            <column name="description">fffffffff</column>
-            <column name="tags">#fffff</column>
-        </table>
-        <!-- Table images -->
-        <table name="images">
-            <column name="id">1</column>
-            <column name="userID">1</column>
-            <column name="localPath">../../Images/DataBaseImages/3434.jpeg</column>
-        </table>
-        <table name="images">
-            <column name="id">2</column>
-            <column name="userID">1</column>
-            <column name="localPath">../../Images/DataBaseImages/dsafsdfa.jpeg</column>
-        </table>
-        <table name="images">
-            <column name="id">3</column>
-            <column name="userID">5</column>
-            <column name="localPath">../../Images/DataBaseImages/ffffff.jpeg</column>
-        </table>
-        <!-- Table users -->
-        <table name="users">
-            <column name="id">1</column>
-            <column name="username">iulian</column>
-            <column name="passw">1234</column>
-        </table>
-        <table name="users">
-            <column name="id">2</column>
-            <column name="username">iulian2</column>
-            <column name="passw">123456</column>
-        </table>
-        <table name="users">
-            <column name="id">3</column>
-            <column name="username">iulian3</column>
-            <column name="passw">123456</column>
-        </table>
-        <table name="users">
-            <column name="id">4</column>
-            <column name="username">iulian1</column>
-            <column name="passw">123456</column>
-        </table>
-        <table name="users">
-            <column name="id">5</column>
-            <column name="username">dodu</column>
-            <column name="passw">123456</column>
-        </table>
+        <!-- Tabel exifinfo -->
+        <!-- Tabel images -->
+        <!-- Tabel users -->
     </database>
 </pma_xml_export>

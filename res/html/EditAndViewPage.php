@@ -14,6 +14,7 @@ if (isset($_SESSION["username"])) :
         <link rel="stylesheet" type="text/css" href="../css/style_editAndView.css">
         <link rel="stylesheet" href="../css/style_global.css">
         <link rel="stylesheet" href="../css/style_home.css">
+        <link rel="stylesheet" href="../css/style_errors.css">
         <title>Edit And View</title>
     </head>
 
@@ -30,21 +31,21 @@ if (isset($_SESSION["username"])) :
                     <aside id="left">
                         <?php
                         //test(trebuie $_GET["imageID"])
-                        $image=getImage($_COOKIE["imageId"]);
+                        $image = getImage($_COOKIE["imageId"]);
                         echo '<h2>' . $image[0] . '</h2>';
                         echo '<p>' . $image[1] . '</p>';
                         echo '<img id="selected_image" src=' . $image[2] . ' alt="image1">';
                         ?>
                         <!--
-                                    <h2>Image name</h2>
-                                    <p>Aceasta imagine reprezinta un foc (Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                        do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                                        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                        laborum.)</p>
-                                    <img id="selected_image" src="../Images/stub_images/image1.jpg" alt="image1">
-                                    -->
+                                            <h2>Image name</h2>
+                                            <p>Aceasta imagine reprezinta un foc (Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                                do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                                                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                                laborum.)</p>
+                                            <img id="selected_image" src="../Images/stub_images/image1.jpg" alt="image1">
+                                            -->
                     </aside>
 
                     <aside id="right">
@@ -97,12 +98,12 @@ if (isset($_SESSION["username"])) :
                             ?>
                         </ul>
                         <!--
-                            <ul>
-                                <li class="tag">#lemn </li>
-                                <li class="tag">#foc </li>
-                                <li class="tag">#noapte </li>
-                            </ul>
-                        -->
+                                    <ul>
+                                        <li class="tag">#lemn </li>
+                                        <li class="tag">#foc </li>
+                                        <li class="tag">#noapte </li>
+                                    </ul>
+                                -->
                     </div>
                     <div>
                         <form id="download_form" action="../php/edit/edit.controller.php" method="GET">
@@ -113,15 +114,15 @@ if (isset($_SESSION["username"])) :
                                 <option value="png">PNG</option>
                             </select>
                         </form>
-                        <form id="delete_form" action="delete_script">
-                            <button class="footer_btn">Sterge imaginea</button>
+                        <form id="delete_form" action="../php/edit/edit.controller.php" method="POST">
+                            <button name="submit" value="delete" class="footer_btn">Sterge imaginea</button>
                         </form>
-                        <form id="rotate_form" action="rotate_image">
+                        <form id="rotate_form" action="../php/edit/edit.controller.php" method="GET">
                             <button class="footer_btn" type="submit" name="direction" value="left">Roteste stanga</button>
                             <button class="footer_btn" type="submit" name="direction" value="right">Roteste dreapta</button>
                         </form>
                     </div>
-                    <form id="resize_form" action="resize_script">
+                    <form id="resize_form" action="../php/edit/edit.controller.php" method="GET">
                         <div>
                             <div>
                                 <label for="width">Selecteaza latimea in pixeli:</label>
@@ -132,7 +133,12 @@ if (isset($_SESSION["username"])) :
                                 <input type="number" id="height" name="Height" placeholder="X px">
                             </div>
                         </div>
-                        <button class="footer_btn" type="submit">Redimensioneaza</button>
+                        <?php
+                        if (isset($_COOKIE['wrongDimension'])) {
+                            echo '<p id="wrongDimension"> Nu ai completat ambele campuri cu dimensiuni!<p>';
+                        }
+                        ?>
+                        <button name="submit" value="resize" class="footer_btn" type="submit">Redimensioneaza</button>
                     </form>
                 </footer>
 

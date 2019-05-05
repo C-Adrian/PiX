@@ -28,7 +28,7 @@ if (isset($_SESSION["username"])) :
        
 			<label for="fisier">Alege o imagine.
 			</label>
-			<input type="file" name="imagine_aleasa" id="fisier">
+			<input type="file"  name="imagine_aleasa" id="fisier">
 			<?php
 		if (isset($_COOKIE['NoImage'])) {
 			echo '<p style="color: red"> * Nici o imagine aleasa! </p>';

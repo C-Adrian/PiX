@@ -26,10 +26,8 @@ function upload($fisier_ales,$fisiere_alese,$tag1,$tag2,$tag3,$tag4,$tag5,$titlu
     }
     if($fisier_ales[name]!=NULL)
     {
-        $kaboom = explode("/", $fisier_ales['type']);
-        $ext=end($kaboom);
-        move_uploaded_file($fisier_ales['tmp_name'],'../../Images/DataBaseImages/'.$titlu.'.'.$ext);
-        list($width, $height, $t, $attr) = getimagesize('../../Images/DataBaseImages/'.$titlu.'.'.$ext); 
+        
+        $ext = pathinfo($fisier_ales[name], PATHINFO_EXTENSION);
         $data=date(DATE_RFC2822);
         if($tag1[0]!='#')
         $tags='#'.$tag1;
@@ -66,8 +64,8 @@ function upload($fisier_ales,$fisiere_alese,$tag1,$tag2,$tag3,$tag4,$tag5,$titlu
 
         }
         $size=$fisier_ales[size];
-        $dimensiune=(string)$width."x".(string)$height;
-        $localpath='../../Images/DataBaseImages/'.$titlu.'.'.$ext;
+        
+        
         $connection = connectToDatabase();
         $checkID = $connection->prepare("SELECT id FROM users WHERE username = ?");
         $checkID->bind_param("s", $_SESSION["username"] );
@@ -82,6 +80,12 @@ function upload($fisier_ales,$fisiere_alese,$tag1,$tag2,$tag3,$tag4,$tag5,$titlu
         $col2=$ImgId->fetch_assoc();
         $checkImgID->close();
         $ImgId=(string)((int)$col2['id']+1);
+        
+
+        move_uploaded_file($fisier_ales['tmp_name'],'../../Images/DataBaseImages/'.$ImgId.'.'.$ext);
+        list($width, $height, $t, $attr) = getimagesize('../../Images/DataBaseImages/'.$ImgId.'.'.$ext);
+        $dimensiune=(string)$width."x".(string)$height; 
+        $localpath='../../Images/DataBaseImages/'.$ImgId.'.'.$ext;
         $localpath=(string)$localpath;
         $localpath=substr($localpath,3);
 
@@ -91,7 +95,7 @@ function upload($fisier_ales,$fisiere_alese,$tag1,$tag2,$tag3,$tag4,$tag5,$titlu
         $insertStatement -> close();
         
         $insertStatement = $connection -> prepare("INSERT INTO exifinfo VALUES(?, ?, ?, ?, ?, ?, ?)");
-        $insertStatement -> bind_param("sssssss", $ImgId  ,$data,$dimensiune,$size,$titlu,$descriere,$tags);
+        $insertStatement -> bind_param("sssssss", $ImgId ,$data,$dimensiune,$size,$titlu,$descriere,$tags);
         $insertStatement -> execute();
         $insertStatement -> close();
         

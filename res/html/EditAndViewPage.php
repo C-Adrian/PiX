@@ -54,27 +54,27 @@ if (isset($_SESSION["username"])) :
                         <form name="filter_image" action="../php/edit/edit.controller.php" method="GET">
                             <div class="filters">
                                 <div class="filter">
-                                    <img src="../Images/stub_images/winter_image1.jpg" alt="IMG_FILTER_NEGATE">
+                                    <img src="../Images/stub_images/filter1.jpg" alt="IMG_FILTER_NEGATE">
                                     <input id="IMG_FILTER_NEGATE" type="checkbox" name="filter" value="IMG_FILTER_NEGATE">
                                     <label for="IMG_FILTER_NEGATE">Negate Filter</label>
                                 </div>
                                 <div class="filter">
-                                    <img src="../Images/stub_images/sepia_image1.jpg" alt="IMG_FILTER_GRAYSCALE">
+                                    <img src="../Images/stub_images/filter2.jpg" alt="IMG_FILTER_GRAYSCALE">
                                     <input id="IMG_FILTER_GRAYSCALE" type="checkbox" name="filter" value="IMG_FILTER_GRAYSCALE">
                                     <label for="IMG_FILTER_GRAYSCALE">Grayscale Filter</label>
                                 </div>
                                 <div class="filter">
-                                    <img src="../Images/stub_images/summer_image1.jpg" alt="IMG_FILTER_EMBOSS">
+                                    <img src="../Images/stub_images/filter3.jpg" alt="IMG_FILTER_EMBOSS">
                                     <input id="IMG_FILTER_EMBOSS" type="checkbox" name="filter" value="IMG_FILTER_EMBOSS">
                                     <label for="IMG_FILTER_EMBOSS">Emboss Filter</label>
                                 </div>
                                 <div class="filter">
-                                    <img src="../Images/stub_images/summer_image1.jpg" alt="IMG_FILTER_MEAN_REMOVAL">
+                                    <img src="../Images/stub_images/filter4.jpg" alt="IMG_FILTER_MEAN_REMOVAL">
                                     <input id="IMG_FILTER_MEAN_REMOVAL" type="checkbox" name="filter" value="IMG_FILTER_MEAN_REMOVAL">
                                     <label for="IMG_FILTER_MEAN_REMOVAL">Mean Remove Filter</label>
                                 </div>
                                 <div class="filter">
-                                    <img src="../Images/stub_images/no_filter_image1.jpg" alt="no_filter">
+                                    <img src="../Images/stub_images/no_filter.jpg" alt="no_filter">
                                     <input id="no_filter" type="checkbox" name="filter" value="no_filter">
                                     <label for="no_filter">No Filter</label>
                                 </div>

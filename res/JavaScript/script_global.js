@@ -10,8 +10,8 @@ function hideAdvSearch() {
     }
 }
 function Redirect(imageId) {
-    var str="imageId=".concat(imageId.toString()).concat("; expires=0; path=/");
+    var str = "imageId=".concat(imageId.toString()).concat("; expires=0; path=/");
     document.cookie = str;
     //document.cookie = "imageId=1; expires=0; path=/";
-    window.location="EditAndViewPage.php";
- }
+    window.location = "EditAndViewPage.php";
+}

@@ -2,8 +2,9 @@
 session_start();
 if (isset($_SESSION["username"])) :
 	setcookie("filteredImg", 1, time(), "/");
-	setcookie("imageId", 1, time(), "/");
+	//setcookie("imageId", 1, time(), "/");
 	include_once "../php/home/homeContent.php";
+	deleteTempImage();
 	?>
 
 
@@ -111,7 +112,7 @@ if (isset($_SESSION["username"])) :
 								<img src="'.$images[$key][0].'" alt="Not available" onclick="Redirect('.$key.');">
 								<button class="download_button">Download</button>
 							</div>
-							<p class="image_tags">#tag #lorem #ipsum #sample</p>
+							<p class="image_tags">'.$images[$key][2].'</p>
 						</div>
 						';
 				}

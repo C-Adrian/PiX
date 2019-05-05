@@ -61,4 +61,24 @@ function getImage($imageID)
     array_push($result, getImageTags($imageID));
     return $result;
 }
+function checkDelBtn()
+{
+    $connection = connectToDatabase();
+    $stm = $connection->prepare("SELECT id FROM users WHERE username = ?");
+    $stm->bind_param("s",$_SESSION["username"]);
+    $stm->execute();
+    $dbResult = $stm->get_result();
+    $userId=$dbResult->fetch_assoc();
+    $stm = $connection->prepare("SELECT * FROM images WHERE userID = ? AND id = ?");
+    $stm->bind_param("ii", $userId["id"],$_COOKIE["imageId"]);
+    $stm->execute();
+    $dbResult = $stm->get_result();
+    if(mysqli_num_rows($dbResult)>0)
+    {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 ?>

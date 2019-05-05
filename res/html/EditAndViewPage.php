@@ -115,9 +115,17 @@ if (isset($_SESSION["username"])) :
                                 <option value="png">PNG</option>
                             </select>
                         </form>
-                        <form id="delete_form" action="../php/edit/edit.controller.php" method="POST">
-                            <button name="submit" value="delete" class="footer_btn">Sterge imaginea</button>
-                        </form>
+                        <?php
+                            $bool=checkDelBtn();
+                            if($bool)
+                            {
+                                echo '
+                                    <form id="delete_form" action="../php/edit/edit.controller.php" method="POST">
+                                        <button name="submit" value="delete" class="footer_btn">Sterge imaginea</button>
+                                    </form>
+                                    ';
+                            }
+                        ?>
                         <form id="rotate_form" action="../php/edit/edit.controller.php" method="GET">
                             <button class="footer_btn" type="submit" name="direction" value="left">Roteste stanga</button>
                             <button class="footer_btn" type="submit" name="direction" value="right">Roteste dreapta</button>

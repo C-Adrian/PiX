@@ -83,6 +83,7 @@ function upload($fisier_ales,$fisiere_alese,$tag1,$tag2,$tag3,$tag4,$tag5,$titlu
         $checkImgID->close();
         $ImgId=(string)((int)$col2['id']+1);
         $localpath=(string)$localpath;
+        $localpath=substr($localpath,3);
 
         $insertStatement= $connection->prepare("INSERT INTO images VALUES(?,?,?)");
         $insertStatement -> bind_param("sss", $ImgId ,$userID ,$localpath);

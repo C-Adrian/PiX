@@ -9,15 +9,29 @@ function getAllImages()
     $stm->execute();
     $dbResult = $stm->get_result();
     while ($row = $dbResult->fetch_assoc()) {
-        $stm = $connection->prepare("SELECT title FROM exifinfo WHERE imageID = ?");
+        $stm = $connection->prepare("SELECT title,tags FROM exifinfo WHERE imageID = ?");
         $stm->bind_param("s", $row["id"]);
         $stm->execute();
         $dbResultTitle = $stm->get_result();
-        $title=$dbResultTitle->fetch_assoc();
-        $image=array();
-        array_push($image,$row["localPath"]);
-        array_push($image,$title["title"]);
-        $images[$row["id"]]=$image;
+        $title = $dbResultTitle->fetch_assoc();
+        $image = array();
+        array_push($image, $row["localPath"]);
+        array_push($image, $title["title"]);
+        array_push($image, $title["tags"]);
+        $images[$row["id"]] = $image;
     }
     return $images;
+}
+function deleteTempImage()
+{
+    $folder = "../Images/temp/" . $_SESSION["username"];
+    if (file_exists($folder)) {
+        foreach (glob($folder . '/*') as $file) {
+            if (is_dir($file))
+                rrmdir($file);
+            else
+                unlink($file);
+        }
+        rmdir($folder);
+    }
 }

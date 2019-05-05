@@ -101,6 +101,7 @@ function rotate($direction)
     $imagePath = getImagePath($_COOKIE["imageId"]);
     $ext = pathinfo($imagePath, PATHINFO_EXTENSION);
     if (!isset($_COOKIE["filteredImg"])) {
+        mkdir("../../Images/temp/" . $_SESSION["username"]);
         copy("../" . $imagePath, "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext);
         setcookie("filteredImg", $ext, time() + 3600, "/");
         $img = imagecreatefromstring(file_get_contents("../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext));

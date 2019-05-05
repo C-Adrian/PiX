@@ -2,8 +2,9 @@
 session_start();
 if (isset($_SESSION["username"])) :
 	setcookie("filteredImg", 1, time(), "/");
-	setcookie("imageId",1,time(),"/");
-?>
+	setcookie("imageId", 1, time(), "/");
+	include_once "../php/home/homeContent.php";
+	?>
 
 
 	<!DOCTYPE html>
@@ -98,11 +99,28 @@ if (isset($_SESSION["username"])) :
 		<main>
 			<h3 class="image_display_label">Images</h3>
 			<div id="image_display">
-
+				<?php
+				$images = getAllImages();
+				$keys = array_keys($images);
+				foreach ($keys as $key) {
+					//echo $images[$key][0];
+					echo '
+						<div class="image_frame">
+							<h4 class="image_title">'.$images[$key][1].'</h4>
+							<div class="image_object">
+								<img src="'.$images[$key][0].'" alt="Not available" onclick="Redirect('.$key.');">
+								<button class="download_button">Download</button>
+							</div>
+							<p class="image_tags">#tag #lorem #ipsum #sample</p>
+						</div>
+						';
+				}
+				?>
+				<!--
 				<div class="image_frame">
 					<h4 class="image_title">Image name</h4>
 					<div class="image_object">
-						<img src="../Images/stub_images/image1.jpg" alt="Not available" onclick="Redirect();">
+						<img src="../Images/stub_images/image1.jpg" alt="Not available" onclick="Redirect(2);">
 						<button class="download_button">Download</button>
 					</div>
 					<p class="image_tags">#tag #lorem #ipsum #sample</p>
@@ -177,7 +195,7 @@ if (isset($_SESSION["username"])) :
 					</div>
 					<p class="image_tags">#tag #lorem #ipsum #sample</p>
 				</div>
-
+			-->
 			</div>
 		</main>
 
@@ -187,16 +205,19 @@ if (isset($_SESSION["username"])) :
 
 <?php
 else :
-?>
+	?>
 	<!DOCTYPE html>
 	<html lang="ro">
+
 	<head>
 		<link rel="stylesheet" type="text/css" href="../css/style_errors.css" />
 	</head>
+
 	<body class="notLogged">
 		<p id="notLogged">
 			Nu esti logat, intai logheaza-te!!! <p><br>
 	</body>
+
 	</html>
 <?php
 endif;

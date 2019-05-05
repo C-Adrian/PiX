@@ -9,7 +9,9 @@ function hideAdvSearch() {
         advSearch.classList.add('is--open');
     }
 }
-function Redirect() {
-    document.cookie = "imageId=1; expires=0; path=/";
+function Redirect(imageId) {
+    var str="imageId=".concat(imageId.toString()).concat("; expires=0; path=/");
+    document.cookie = str;
+    //document.cookie = "imageId=1; expires=0; path=/";
     window.location="EditAndViewPage.php";
  }

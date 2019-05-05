@@ -34,6 +34,7 @@ if (isset($_SESSION["username"])) :
                         $image = getImage($_COOKIE["imageId"]);
                         echo '<h2>' . $image[0] . '</h2>';
                         echo '<p>' . $image[1] . '</p>';
+                        //echo $image[2];
                         echo '<img id="selected_image" src=' . $image[2] . ' alt="image1">';
                         ?>
                         <!--

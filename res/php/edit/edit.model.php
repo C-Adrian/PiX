@@ -189,5 +189,26 @@ function resize($width, $height)
 }
 function deleteImage($imgId)
 {
+    $connection = connectToDatabase();
+    $deleteStm = $connection->prepare("DELETE FROM exifinfo WHERE imageID = ?");
+    $deleteStm->bind_param("i", $imgId);
+    $deleteStm->execute();
+    $deleteStm->close();
 
+    $getPathStm = $connection->prepare("SELECT localPath FROM images WHERE id = ?");
+    echo $connection->error;
+    $getPathStm->bind_param("i", $imgId);
+    
+    $getPathStm->execute();
+    $dbResult = $getPathStm->get_result();
+    $pathToBeDelete = $dbResult->fetch_assoc();
+    $localPath = $pathToBeDelete["localPath"];
+    unlink("../" . $localPath);
+    
+    $getPathStm->close();
+
+    $deleteStm = $connection->prepare("DELETE FROM images WHERE id = ?");
+    $deleteStm->bind_param("i", $imgId);
+    $deleteStm->execute();
+    $deleteStm->close();
 }

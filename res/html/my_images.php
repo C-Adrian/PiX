@@ -4,16 +4,14 @@ if (isset($_SESSION["username"])) :
 	setcookie("filteredImg", 1, time(), "/");
 	//setcookie("imageId", 1, time(), "/");
 	include_once "../php/home/homeContent.php";
-	deleteTempImage();
 	?>
-
 
 	<!DOCTYPE html>
 	<html lang="en">
 
 	<head>
-		<meta charset="UTF-8">
-		<title>PiX - Home</title>
+		<meta charset="utf-8">
+		<title>PiX - My Images</title>
 		<meta name="description" content="PiX Home">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -35,7 +33,7 @@ if (isset($_SESSION["username"])) :
 			</div>
 			<div id="navbar_half_right" class="navbar_half">
 				<a href="Upload.php" class="clickable_item">Upload </a>
-				<a href="my_images.php" class="clickable_item">My images</a>
+				<a href="Home.php" class="clickable_item">Home</a>
 				<a href="Login.html" class="clickable_item">Logout</a>
 
 				<div class="dropdown_menu"> Menu
@@ -43,7 +41,7 @@ if (isset($_SESSION["username"])) :
 						<button type="button" class="clickable_item" onclick="hideAdvSearch()">Advanced
 							search</button>
 						<a href="Upload.php" class="clickable_item">Upload </a>
-						<a href="my_images.php" class="clickable_item">My images</a>
+						<a href="Home.php" class="clickable_item">Home</a>
 						<a href="Login.html" class="clickable_item">Logout</a>
 					</div>
 				</div>
@@ -53,7 +51,7 @@ if (isset($_SESSION["username"])) :
 
 		<aside class="advanced_search">
 			<h2>Advanced Search</h2>
-			<form action="../php/home/search.controller.php" method="POST">
+			<form action="search_script">
 				<div>
 					<label for="tags_search">Tags:</label>
 					<input type="text" name="tags_list" id="tags_search" placeholder="Add tags...">
@@ -93,121 +91,79 @@ if (isset($_SESSION["username"])) :
 					<label for="size">Maximum Size</label>
 					<input type="number" id="size" placeholder="X MB" max="10" name="size">
 				</div>
-				<button id="btn_search" type="submit" name="search" value="advSearch">Go</button>
+				<button id="btn_search">Go</button>
 			</form>
 
 		</aside>
 		<main>
-			<h3 class="image_display_label">Images</h3>
+			<h3 class="image_display_label">My images</h3>
 			<div id="image_display">
-				<?php
-				if (isset($_COOKIE["searchResult"])) { 
-					//display all images from json created in search.model.php
-				} else {
-					$images = getAllImages();
-					$keys = array_keys($images);
-					foreach ($keys as $key) {
-						//echo $images[$key][0];
-						echo '
+
+			<?php
+				$images = getMyImages();
+				$keys = array_keys($images);
+				foreach ($keys as $key) {
+					//echo $images[$key][0];
+					echo '
 						<div class="image_frame">
-							<h4 class="image_title">' . $images[$key][1] . '</h4>
+							<h4 class="image_title">'.$images[$key][1].'</h4>
 							<div class="image_object">
-								<img src="' . $images[$key][0] . '" alt="Not available" onclick="Redirect(' . $key . ');">
+								<img src="'.$images[$key][0].'" alt="Not available" onclick="Redirect('.$key.');">
 								<button class="download_button">Download</button>
 							</div>
-							<p class="image_tags">' . $images[$key][2] . '</p>
+							<p class="image_tags">'.$images[$key][2].'</p>
 						</div>
 						';
-					}
 				}
 				?>
-				<!--
-					<div class="image_frame">
-						<h4 class="image_title">Image name</h4>
-						<div class="image_object">
-							<img src="../Images/stub_images/image1.jpg" alt="Not available" onclick="Redirect(2);">
-							<button class="download_button">Download</button>
-						</div>
-						<p class="image_tags">#tag #lorem #ipsum #sample</p>
+
+			<!--
+				<div class="image_frame">
+					<h4 class="image_title">Image name</h4>
+					<div class="image_object">
+						<img src="../Images/stub_images/image1.jpg" alt="Not available" onclick="Redirect();">
+						<button class="download_button">Download</button>
+						<button class="remove_img_button">Delete</button>
 					</div>
+					<p class="image_tags">#tag #lorem #ipsum #sample</p>
+				</div>
 
-					<div class="image_frame">
-						<h4 class="image_title">Image name</h4>
-						<div class="image_object">
-							<img src="../Images/stub_images/abstract2.jpg" alt="Not available" onclick="Redirect();">
-							<button class="download_button">Download</button>
-
-						</div>
-						<p class="image_tags">#tag #lorem #ipsum #sample</p>
+				<div class="image_frame">
+					<h4 class="image_title">Image name</h4>
+					<div class="image_object">
+						<img src="../Images/stub_images/abstract2.jpg" alt="Not available" onclick="Redirect();">
+						<button class="download_button">Download</button>
+						<button class="remove_img_button">Delete</button>
 					</div>
+					<p class="image_tags">#tag #lorem #ipsum #sample</p>
+				</div>
 
-					<div class="image_frame">
-						<h4 class="image_title">Image name</h4>
-						<div class="image_object">
-							<img src="../Images/stub_images/abstract.png" alt="Not available" onclick="Redirect();">
-							<button class="download_button">Download</button>
-
-						</div>
-						<p class="image_tags">#tag #lorem #ipsum #sample</p>
+				<div class="image_frame">
+					<h4 class="image_title">Image name</h4>
+					<div class="image_object">
+						<img src="../Images/stub_images/abstract.png" alt="Not available" onclick="Redirect();">
+						<button class="download_button">Download</button>
+						<button class="remove_img_button">Delete</button>
 					</div>
+					<p class="image_tags">#tag #lorem #ipsum #sample</p>
+				</div>
 
-					<div class="image_frame">
-						<h4 class="image_title">Image name</h4>
-						<div class="image_object">
-							<img src="../Images/stub_images/street.jpeg" alt="Not available" onclick="Redirect();">
-							<button class="download_button">Download</button>
-
-						</div>
-						<p class="image_tags">#tag #lorem #ipsum #sample</p>
+				<div class="image_frame">
+					<h4 class="image_title">Image name</h4>
+					<div class="image_object">
+						<img src="../Images/stub_images/street.jpeg" alt="Not available" onclick="Redirect();">
+						<button class="download_button">Download</button>
+						<button class="remove_img_button">Delete</button>
 					</div>
-
-					<div class="image_frame">
-						<h4 class="image_title">Image name</h4>
-						<div class="image_object">
-							<img src="../Images/stub_images/vaporwave.jpg" alt="Not available" onclick="Redirect();">
-							<button class="download_button">Download</button>
-
-						</div>
-						<p class="image_tags">#tag #lorem #ipsum #sample</p>
-					</div>
-
-					<div class="image_frame">
-						<h4 class="image_title">Image name</h4>
-						<div class="image_object">
-							<img src="../Images/stub_images/field.png" alt="Not available" onclick="Redirect();">
-							<button class="download_button">Download</button>
-
-						</div>
-						<p class="image_tags">#tag #lorem #ipsum #sample</p>
-					</div>
-
-					<div class="image_frame">
-						<h4 class="image_title">Image name</h4>
-						<div class="image_object">
-							<img src="../Images/stub_images/lake.jpg" alt="Not available" onclick="Redirect();">
-							<button class="download_button">Download</button>
-
-						</div>
-						<p class="image_tags">#tag #lorem #ipsum #sample</p>
-					</div>
-
-					<div class="image_frame">
-						<h4 class="image_title">Image name</h4>
-						<div class="image_object">
-							<img src="../Images/stub_images/tree.jpg" alt="Not available" onclick="Redirect();">
-							<button class="download_button">Download</button>
-
-						</div>
-						<p class="image_tags">#tag #lorem #ipsum #sample</p>
-					</div>
-				-->
+					<p class="image_tags">#tag #lorem #ipsum #sample</p>
+				</div>
+-->
 			</div>
 		</main>
 
 	</body>
 
 	</html>
-
 <?php
 else :
 	?>

@@ -65,18 +65,22 @@ function register($username, $password, $repassword)
             $getUsersID->execute();
             $dbResult = $getUsersID->get_result();
             $id = $dbResult->fetch_assoc();
-            $id=$id["id"]+1;
+            $id = $id["id"] + 1;
             //file_put_contents("log.txt",$id);
             $insertStatement = $connection->prepare("INSERT INTO users VALUE(?, ?, ?)");
             $insertStatement->bind_param("iss", $id, $username, $password);
             $insertStatement->execute();
             //file_put_contents("log.txt",$connection->error);
-            $insertStatement ->close();
+            $insertStatement->close();
             return true;
         }
     } else {
         return false;
     }
 }
-
-?>
+function logout()
+{
+    session_start();
+    session_destroy();
+    setcookie("imageId", 1, time(), '/');
+}

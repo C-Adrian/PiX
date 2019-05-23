@@ -10,13 +10,19 @@ if ($_POST["submit"] == "login") {
     } else {
         header("location: ../../html/Login.php");
     }
-} else 
- {
+} 
+if($_POST["submit"] == "register")
+{
     $resultOK = register($_POST["username"], $_POST["password"], $_POST["repassword"]);
     if ($resultOK) {
         header("location: ../../html/home.php");
     } else {
         header("location: ../../html/Register.php");
     }
+}
+if($_POST["submit"] == "logout")
+{
+    logout();
+    header('location: ../../html/Login.php');
 }
 ?>

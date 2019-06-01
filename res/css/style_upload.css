@@ -68,6 +68,14 @@ nav .clickable_item:hover {
 	margin-left: 10px;
 	margin-bottom: 20px;
 	padding-top:4em;
+	display: flex;
+}
+.completare{
+	width: 100%;
+	flex-direction: column;
+	float: left;
+	display: flex;
+	
 }
 
 .card>* {

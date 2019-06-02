@@ -17,7 +17,7 @@
     font-size: 350%;
 }
 
-.loginErrors, #wrongDimension, #usr_pswNotMatch {
+.loginErrors, #wrongDimension, #usr_pswNotMatch, #invalidSearch {
     color: red;
     font-style: italic;
     font-size: 1.2em;

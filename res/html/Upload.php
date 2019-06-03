@@ -65,7 +65,7 @@ if (isset($_SESSION["username"])) :
 
 		</div>
         
-		<div class="imagine">
+		<div class="imagine" id="imagine">
             
 			<img src="../Images/stub_images/dota.jpg" alt="o imagine">
 		</div>

@@ -87,7 +87,10 @@ nav .clickable_item:hover {
 	width: 60%;
 	float: right;
 	height: 100%;
-	display: block;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-self: baseline ;
 	padding-top:4em;
 
 }
@@ -108,7 +111,15 @@ input[type=text], textarea {
 img {
 	height: auto;
 	max-width: 100%;
-	display: block;
+	
+	margin-left: auto;
+	margin-right: auto
+}
+.imagine_pusa{
+	height: auto;
+	max-width: 30%;
+	margin-top: 4px;
+	
 	margin-left: auto;
 	margin-right: auto
 }

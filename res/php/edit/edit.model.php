@@ -72,26 +72,49 @@ function download($extension)
     $imagePath = getImagePath($_COOKIE["imageId"]);
     if (!isset($_COOKIE["filteredImg"])) {
         if ($extension == "png") {
-            imagepng(imagecreatefromstring(file_get_contents("../" . $imagePath)), "D:\PiX_Downloads\downloaded_image.png");
+            imagepng(imagecreatefromstring(file_get_contents("../".$imagePath)),"../../Images/temp/output.png");
+            header("Content-Type: image/png");
+            header('Content-Disposition: attachment; filename=download.png');
+            readfile("../../Images/temp/output.png");
+            unlink("../../Images/temp/output.png");
         }
         if ($extension == "jpeg") {
-            imagejpeg(imagecreatefromstring(file_get_contents("../" . $imagePath)), "D:\PiX_Downloads\downloaded_image.jpg");
+            imagejpeg(imagecreatefromstring(file_get_contents("../".$imagePath)),"../../Images/temp/output.jpg");
+            header("Content-Type: image/jpeg");
+            header('Content-Disposition: attachment; filename=download.jpg');
+            readfile("../../Images/temp/output.jpg");
+            unlink("../../Images/temp/output.jpg");
         }
         if ($extension == "bmp") {
-            imagebmp(imagecreatefromstring(file_get_contents("../" . $imagePath)), "D:\PiX_Downloads\downloaded_image.bmp");
+            imagebmp(imagecreatefromstring(file_get_contents("../".$imagePath)),"../../Images/temp/output.bmp");
+            header("Content-Type: image/bmp");
+            header('Content-Disposition: attachment; filename=download.bmp');
+            readfile("../../Images/temp/output.bmp");
+            unlink("../../Images/temp/output.bmp");
         }
     } else {
         $ext = pathinfo($imagePath, PATHINFO_EXTENSION);
-        echo "../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext;
-        //imagepng(imagecreatefromstring(file_get_contents("../../Images/temp/temp".$_COOKIE["imageId"]."." . $ext)), "output.png");
+        $newImagePath="../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext;
         if ($extension == "png") {
-            imagepng(imagecreatefromstring(file_get_contents("../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext)), "D:\PiX_Downloads\downloaded_image.png");
+            imagepng(imagecreatefromstring(file_get_contents($newImagePath)),"../../Images/temp/output.png");
+            header("Content-Type: image/png");
+            header('Content-Disposition: attachment; filename=download.png');
+            readfile("../../Images/temp/output.png");
+            unlink("../../Images/temp/output.png");
         }
         if ($extension == "jpeg") {
-            imagejpeg(imagecreatefromstring(file_get_contents("../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext)), "D:\PiX_Downloads\downloaded_image.jpg");
+            imagejpeg(imagecreatefromstring(file_get_contents($newImagePath)),"../../Images/temp/output.jpg");
+            header("Content-Type: image/jpeg");
+            header('Content-Disposition: attachment; filename=download.jpg');
+            readfile("../../Images/temp/output.jpg");
+            unlink("../../Images/temp/output.jpg");
         }
         if ($extension == "bmp") {
-            imagebmp(imagecreatefromstring(file_get_contents("../../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext)), "D:\PiX_Downloads\downloaded_image.bmp");
+            imagebmp(imagecreatefromstring(file_get_contents($newImagePath)),"../../Images/temp/output.bmp");
+            header("Content-Type: image/bmp");
+            header('Content-Disposition: attachment; filename=download.bmp');
+            readfile("../../Images/temp/output.bmp");
+            unlink("../../Images/temp/output.bmp");
         }
     }
 }

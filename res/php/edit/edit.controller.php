@@ -8,7 +8,7 @@ if (isset($_GET["submit"])) {
     }
     if ($_GET["submit"] == "download") {
         download($_GET["download"]);
-        header("location: ../../html/EditAndViewPage.php");
+        //header("location: ../../html/EditAndViewPage.php");
     }
     if ($_GET["submit"] == "resize") {
         if ($_GET["Width"] == "" or $_GET["Height"] == "") {

@@ -19,12 +19,14 @@ if (isset($_SESSION["username"])) :
     </head>
 
     <body>
-        <nav id="navbar">
-            <div id="navbar_half_right" class="navbar_half">
-                <a href="Home.php" class="clickable_item">Home</a>
-                <a href="Login.php" class="clickable_item">Logout</a>
-            </div>
-        </nav>
+            <nav id="navbar">
+                <div id="navbar_half_right" class="navbar_half">
+                    <a href="Home.php" class="clickable_item">Home</a>
+                    <form action="../php/auth/auth.controller.php" method="POST">
+                        <button name="logout_btn" type="submit" class="clickable_item" id="logout_button_1" value="logout">Logout</button>
+                    </form>
+                </div>
+            </nav>
         <main>
             <div class="edit_view">
                 <header>

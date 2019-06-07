@@ -1,5 +1,5 @@
 <?php
-	include_once "../database.php";
+	include_once "database.php";
 	session_start();
 	//header('Content-type: application/json');
 	$query_result = array();
@@ -9,13 +9,22 @@
 		$newimg = new stdClass(); //image object declaration
 		$connection = connectToDatabase();
 
-		$query = $connection->prepare("SELECT i.id, i.localPath, ei.title, ei.tags,ei.creationDate ,ei.dimension
+		$query = $connection->prepare("SELECT i.id, i.localPath, info.title, info.tags, info.creationDate, info.dimension
     FROM images i LEFT JOIN exifinfo info ON i.id = info.imageID");
 
-		//$query->bind_param("i");
 		$query->execute();
-
 		$result = $query->get_result();
+
+		while ($singleRes = $result->fetch_assoc()) {
+        $component = array();
+        array_push($component, $singleRes["id"]);
+        array_push($component, $singleRes["title"]);
+        array_push($component, $singleRes["tags"]);
+        array_push($component, $singleRes["creationDate"]);
+        array_push($component, $singleRes["dimension"]);
+        array_push($component, $singleRes["localPath"]);
+        array_push($images, $component);
+    }
 
 		echo $result;
 	}

@@ -37,23 +37,26 @@ if (isset($_SESSION["username"])) :
 						search</button>
 			</div>
 
-			<form action="../php/auth/auth.controller.php" method="POST">
-				<div id="navbar_half_right" class="navbar_half">
-					<a href="Upload.php" class="clickable_item">Upload </a>
-					<a href="my_images.php" class="clickable_item">My images</a>
-					<button name="logout_btn" type="submit" class="clickable_item" id="logout_button_1" value="logout">Logout</button>
+			
+			<div id="navbar_half_right" class="navbar_half">
+				<a href="Upload.php" class="clickable_item">Upload </a>
+				<a href="my_images.php" class="clickable_item">My images</a>
+				<form action="../php/auth/auth.controller.php" method="POST">
+					<button name="logout_btn" type="submit" class="clickable_item" value="logout">Logout</button>
+				</form>
 
-					<div class="dropdown_menu"> Menu
-						<div class="dropdown_content">
-							<button type="button" class="clickable_item" onclick="hideAdvSearch()">Advanced
+				<div class="dropdown_menu"> Menu
+					<div class="dropdown_content">
+						<button type="button" class="clickable_item" onclick="hideAdvSearch()">Advanced
 								search</button>
-							<a href="Upload.php" class="clickable_item">Upload </a>
-							<a href="my_images.php" class="clickable_item">My images</a>
-							<button name="logout_btn" type="submit" class="clickable_item" id="logout_button_2" value="logout">Logout</button>
-						</div>
+						<a href="Upload.php" class="clickable_item">Upload </a>
+						<a href="my_images.php" class="clickable_item">My images</a>
+						<form action="../php/auth/auth.controller.php" method="POST">
+							<button name="logout_btn" type="submit" class="clickable_item" value="logout">Logout</button>
+						</form>
 					</div>
 				</div>
-			</form>
+			</div>
 		</nav>
 
 		<aside class="advanced_search">

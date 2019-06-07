@@ -27,14 +27,18 @@ if (isset($_SESSION["username"])) :
 		<nav id="navbar">
 			<div id="navbar_half_left" class="navbar_half">
 				<input type="text" placeholder="Search..." class="search_box">
-				<button type="submit" class="clickable_item" id="search_button">Go</button>
+				<form action="../php/home/search.controller.php" method="GET">
+						<button name="simple_search_btn" type="submit" class="clickable_item" id="simple_search_button" value="simpleSearch">Go</button>
+				</form>
 				<button type="button" class="clickable_item" onclick="hideAdvSearch()">Advanced
 					search</button>
 			</div>
 			<div id="navbar_half_right" class="navbar_half">
 				<a href="Upload.php" class="clickable_item">Upload </a>
 				<a href="Home.php" class="clickable_item">Home</a>
-				<a href="Login.html" class="clickable_item">Logout</a>
+				<form action="../php/auth/auth.controller.php" method="POST">
+					<button name="logout_btn" type="submit" class="clickable_item" value="logout">Logout</button>
+				</form>
 
 				<div class="dropdown_menu"> Menu
 					<div class="dropdown_content">
@@ -42,7 +46,9 @@ if (isset($_SESSION["username"])) :
 							search</button>
 						<a href="Upload.php" class="clickable_item">Upload </a>
 						<a href="Home.php" class="clickable_item">Home</a>
-						<a href="Login.html" class="clickable_item">Logout</a>
+						<form action="../php/auth/auth.controller.php" method="POST">
+							<button name="logout_btn" type="submit" class="clickable_item" value="logout">Logout</button>
+						</form>
 					</div>
 				</div>
 

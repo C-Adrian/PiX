@@ -25,4 +25,12 @@ if($_POST["submit"] == "logout")
     logout();
     header('location: ../../html/Login.php');
 }
+
+if($_POST["logout_btn"] == "logout")
+{
+    logout();
+    header('location: ../../html/Login.php');
+}
 ?>
+
+

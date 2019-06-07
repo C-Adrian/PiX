@@ -15,7 +15,7 @@ nav {
 	z-index: 10;
 }
 
-nav>.navbar_half {
+nav .navbar_half {
 	height: 100%;
 	display: flex;
 	flex-direction: row;
@@ -33,7 +33,7 @@ nav #navbar_half_right {
 	float: right;
 }
 
-nav > .navbar_half > .clickable_item, .dropdown_menu {
+nav .navbar_half .clickable_item, .dropdown_menu {
 	background-color: var(--nav-bg-color);
 	border-width: 0;
 	text-decoration: none;
@@ -44,7 +44,6 @@ nav > .navbar_half > .clickable_item, .dropdown_menu {
 	padding-right: 0.5em;
 	height: 100%;
 	line-height: 300%;
-
 }
 
 nav .clickable_item:hover, .dropdown_menu:hover {
@@ -101,6 +100,11 @@ nav #search_button
 	text-align: left;
 }
 
+.dropdown_content > form > #logout_button_2
+{
+	width: 100%;
+}
+
 nav .search_box {
 	width: 20em;
 	font-size: 0.9em;
@@ -116,10 +120,10 @@ nav .search_box {
 }
 
 @media (max-width: 55em) {
-	nav>.navbar_half>.clickable_item {
+	nav>form>.navbar_half>.clickable_item {
 		display: none;
 	}
-	nav>.navbar_half>#search_button {
+	nav #simple_search_button {
 		display: flex;
 	}
 	.dropdown_menu {

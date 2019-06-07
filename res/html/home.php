@@ -28,28 +28,31 @@ if (isset($_SESSION["username"])) :
 
 	<body>
 		<nav id="navbar">
-			<div id="navbar_half_left" class="navbar_half">
-				<input type="text" placeholder="Search..." class="search_box">
-				<button type="submit" class="clickable_item" id="search_button">Go</button>
-				<button type="button" class="clickable_item" onclick="hideAdvSearch()">Advanced
-					search</button>
-			</div>
-			<div id="navbar_half_right" class="navbar_half">
-				<a href="Upload.php" class="clickable_item">Upload </a>
-				<a href="my_images.php" class="clickable_item">My images</a>
-				<a href="Login.html" class="clickable_item">Logout</a>
+			<form action="../php/home/search.controller.php" method="GET">
+				<div id="navbar_half_left" class="navbar_half">
+					<input type="text" placeholder="Search..." class="search_box">
+					<button name="simple_search_btn" type="submit" class="clickable_item" id="simple_search_button" value="simpleSearch">Go</button>
+					<button type="button" class="clickable_item" id="adv_search_1" onclick="hideAdvSearch()">Advanced
+						search</button>
+				</div>
+			</form>
+			<form action="../php/auth/auth.controller.php" method="POST">
+				<div id="navbar_half_right" class="navbar_half">
+					<a href="Upload.php" class="clickable_item">Upload </a>
+					<a href="my_images.php" class="clickable_item">My images</a>
+					<button name="logout_btn" type="submit" class="clickable_item" id="logout_button_1" value="logout">Logout</button>
 
-				<div class="dropdown_menu"> Menu
-					<div class="dropdown_content">
-						<button type="button" class="clickable_item" onclick="hideAdvSearch()">Advanced
-							search</button>
-						<a href="Upload.php" class="clickable_item">Upload </a>
-						<a href="my_images.php" class="clickable_item">My images</a>
-						<a href="Login.html" class="clickable_item">Logout</a>
+					<div class="dropdown_menu"> Menu
+						<div class="dropdown_content">
+							<button type="button" class="clickable_item" onclick="hideAdvSearch()">Advanced
+								search</button>
+							<a href="Upload.php" class="clickable_item">Upload </a>
+							<a href="my_images.php" class="clickable_item">My images</a>
+							<button name="logout_btn" type="submit" class="clickable_item" id="logout_button_2" value="logout">Logout</button>
+						</div>
 					</div>
 				</div>
-
-			</div>
+			</form>
 		</nav>
 
 		<aside class="advanced_search">

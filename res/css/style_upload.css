@@ -23,7 +23,7 @@ nav .navbar_half {
     float: right;
 }
 
-nav .navbar_half>.clickable_item {
+nav .navbar_half .clickable_item {
     background-color: var(--nav-bg-color);
     border-width: 0;
     text-decoration: none;

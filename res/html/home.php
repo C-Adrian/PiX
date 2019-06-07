@@ -28,14 +28,15 @@ if (isset($_SESSION["username"])) :
 
 	<body>
 		<nav id="navbar">
-			<form action="../php/home/search.controller.php" method="GET">
-				<div id="navbar_half_left" class="navbar_half">
+			<div id="navbar_half_left" class="navbar_half">
 					<input type="text" placeholder="Search..." class="search_box">
-					<button name="simple_search_btn" type="submit" class="clickable_item" id="simple_search_button" value="simpleSearch">Go</button>
+					<form action="../php/home/search.controller.php" method="GET">
+						<button name="simple_search_btn" type="submit" class="clickable_item" id="simple_search_button" value="simpleSearch">Go</button>
+					</form>
 					<button type="button" class="clickable_item" id="adv_search_1" onclick="hideAdvSearch()">Advanced
 						search</button>
-				</div>
-			</form>
+			</div>
+
 			<form action="../php/auth/auth.controller.php" method="POST">
 				<div id="navbar_half_right" class="navbar_half">
 					<a href="Upload.php" class="clickable_item">Upload </a>

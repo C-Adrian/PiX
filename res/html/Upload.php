@@ -19,13 +19,14 @@ if (isset($_SESSION["username"])) :
 </head>
 
 <body>
-	<form action="../php/auth/auth.controller.php" method="POST">
-		<nav id="navbar">
-			<div id="navbar_half_right" class="navbar_half">
-					<a href="Home.php" class="clickable_item">Home</a>
-					<button name="logout_btn" type="submit" class="clickable_item" id="logout_button_1" value="logout">Logout</button>
-			</div>
-		</nav>
+	<nav id="navbar">
+		<div id="navbar_half_right" class="navbar_half">
+			<a href="Home.php" class="clickable_item">Home</a>
+			<form action="../php/auth/auth.controller.php" method="POST">
+				<button name="logout_btn" type="submit" class="clickable_item" id="logout_button_1" value="logout">Logout</button>
+			</form>
+		</div>
+	</nav>
 	</form>
     <form name="incarca" method="POST" enctype="multipart/form-data" action="../php/upload/upload.controller.php">
 	<main class="card">

@@ -8,6 +8,8 @@ if ($_GET["search"] == "advSearch") {
     header('location: ../../html/home.php');
 }
 
+/*
 if ($_GET["simple_search_btn"] == "simpleSearch") {
     header('location: ../../html/home.php');
 }
+*/

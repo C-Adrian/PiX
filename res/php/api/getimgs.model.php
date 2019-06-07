@@ -1,9 +1,5 @@
 <?php
-	include_once "database.php";
-	session_start();
-	header('Content-type:application/json;charset=utf-8');
-
-	function buildQuery()
+    function buildQuery()
 	{
 		$query_text = "SELECT img.id, img.localPath, info.title, info.tags, info.creationDate, info.dimension
     	FROM images img LEFT JOIN exifinfo info ON img.id = info.imageID WHERE";
@@ -80,6 +76,12 @@
     		$query_text .= " SUBSTRING_INDEX(info.dimension, 'x', -1) <= " . $max_height . " AND";
     	}
 
+    	if (isset($_GET['user']))
+    	{
+    		$user_id = $_GET['user'];
+    		$query_text .= " img.userID = " . $user_id . " AND";
+    	}
+
     	if (substr_compare($query_text, " AND", -4) === 0)
     		$query_text = substr($query_text, 0, -4); //remove trailing " AND" from query
 
@@ -89,7 +91,6 @@
 	function getQueryResponse()
 	{
 		$query_result = array();
-		$newimg = new stdClass(); //image object declaration
 		$connection = connectToDatabase();
 
 		$query_text = buildQuery();
@@ -101,20 +102,17 @@
 
 		while ($img_db_entry = $result->fetch_assoc()) 
 		{
-	        $img_data = array();
-	        array_push($img_data, $img_db_entry["id"]);
-	        array_push($img_data, $img_db_entry["title"]);
-	        array_push($img_data, $img_db_entry["tags"]);
-	        array_push($img_data, $img_db_entry["creationDate"]);
-	        array_push($img_data, $img_db_entry["dimension"]);
-	        array_push($img_data, $img_db_entry["localPath"]);
+	        $img_data = new stdClass(); //image object declaration
+	        $img_data->id=$img_db_entry["id"];
+            $img_data->title=$img_db_entry["title"];
+            $img_data->tags=$img_db_entry["tags"];
+            $img_data->creationDate=$img_db_entry["creationDate"];
+            $img_data->dimension=$img_db_entry["dimension"];
+            $img_data->localPath=$img_db_entry["localPath"];
+
 	        array_push($query_result, $img_data);
    		}
 
    		echo json_encode($query_result);
 	}
-
-	if (isset($_SESSION["username"]))
-		echo getQueryResponse();
-    
 ?>

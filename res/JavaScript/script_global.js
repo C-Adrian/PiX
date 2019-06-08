@@ -1,4 +1,4 @@
-function hideAdvSearch() {
+function toggleAdvSearch() {
     let adv_searchBtn = document.getElementsByClassName('adv_searchBtn');
     let advSearch = document.querySelector('.advanced_search');
 
@@ -9,7 +9,7 @@ function hideAdvSearch() {
         advSearch.classList.add('is--open');
     }
 }
-function Redirect(imageId) {
+function redirectToEdit(imageId) {
     var str = "imageId=".concat(imageId.toString()).concat("; expires=0; path=/");
     document.cookie = str;
     //document.cookie = "imageId=1; expires=0; path=/";

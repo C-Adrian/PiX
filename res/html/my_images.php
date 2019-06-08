@@ -2,7 +2,6 @@
 session_start();
 if (isset($_SESSION["username"])) :
 	setcookie("filteredImg", 1, time(), "/");
-	//setcookie("imageId", 1, time(), "/");
 	include_once "../php/home/homeContent.php";
 	?>
 
@@ -11,7 +10,9 @@ if (isset($_SESSION["username"])) :
 
 	<head>
 		<meta charset="utf-8">
-		<title>PiX - My Images</title>
+		<?php
+		echo "<title>".$_SESSION["username"]."'s images</title>"
+		?>
 		<meta name="description" content="PiX Home">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -26,38 +27,36 @@ if (isset($_SESSION["username"])) :
 	<body>
 		<nav id="navbar">
 			<div id="navbar_half_left" class="navbar_half">
-				<input type="text" placeholder="Search..." class="search_box">
-				<form action="../php/home/search.controller.php" method="GET">
-						<button name="simple_search_btn" type="submit" class="clickable_item" id="simple_search_button" value="simpleSearch">Go</button>
-				</form>
-				<button type="button" class="clickable_item" onclick="hideAdvSearch()">Advanced
-					search</button>
+					<input type="text" placeholder="Search..." class="search_box" id="search_box">
+					<button type="button" class="clickable_item" id="simple_search_button" >Go</button>
+					<button type="button" class="clickable_item" id="adv_search_1"">Advanced
+						search</button>
 			</div>
+
 			<div id="navbar_half_right" class="navbar_half">
 				<a href="Upload.php" class="clickable_item">Upload </a>
-				<a href="Home.php" class="clickable_item">Home</a>
+				<a href="home.php" class="clickable_item">Home</a>
 				<form action="../php/auth/auth.controller.php" method="POST">
 					<button name="logout_btn" type="submit" class="clickable_item" value="logout">Logout</button>
 				</form>
 
 				<div class="dropdown_menu"> Menu
 					<div class="dropdown_content">
-						<button type="button" class="clickable_item" onclick="hideAdvSearch()">Advanced
-							search</button>
+						<button type="button" class="clickable_item" id="adv_search_2">Advanced
+								search</button>
 						<a href="Upload.php" class="clickable_item">Upload </a>
-						<a href="Home.php" class="clickable_item">Home</a>
+						<a href="my_images.php" class="clickable_item">My images</a>
 						<form action="../php/auth/auth.controller.php" method="POST">
 							<button name="logout_btn" type="submit" class="clickable_item" value="logout">Logout</button>
 						</form>
 					</div>
 				</div>
-
 			</div>
 		</nav>
 
 		<aside class="advanced_search">
 			<h2>Advanced Search</h2>
-			<form action="search_script">
+			<form action="../php/home/search.controller.php" method="GET">
 				<div>
 					<label for="tags_search">Tags:</label>
 					<input type="text" name="tags_list" id="tags_search" placeholder="Add tags...">
@@ -92,84 +91,34 @@ if (isset($_SESSION["username"])) :
 						<input id="max_height" type="number" placeholder="X px" min="0" max="3000" name="maxheight">
 					</div>
 				</div>
-				<p class="section_title">Size:</p>
+				<p class="section_title">Size*:</p>
 				<div>
 					<label for="size">Maximum Size</label>
-					<input type="number" id="size" placeholder="X MB" max="10" name="size">
+					<input id="size" placeholder="X MB" type="number" step="0.0001" min="0" max="10" name="size">
 				</div>
-				<button id="btn_search">Go</button>
+				<button id="btn_search" type="button" name="search">Go</button>
 			</form>
+		</aside>
 
 		</aside>
 		<main>
 			<h3 class="image_display_label">My images</h3>
 			<div id="image_display">
 
-			<?php
-				$images = getMyImages();
-				$keys = array_keys($images);
-				foreach ($keys as $key) {
-					//echo $images[$key][0];
-					echo '
-						<div class="image_frame">
-							<h4 class="image_title">'.$images[$key][1].'</h4>
-							<div class="image_object">
-								<img src="'.$images[$key][0].'" alt="Not available" onclick="Redirect('.$key.');">
-								<button class="download_button">Download</button>
-							</div>
-							<p class="image_tags">'.$images[$key][2].'</p>
-						</div>
-						';
-				}
-				?>
+			<script src="../JavaScript/script_global.js"></script>
+			<script src="../JavaScript/query-request_build.js"></script>
+			<script src="../JavaScript/image_fetch-display.js"></script>
+			<script src="../JavaScript/my_images_controller.js"></script>
 
-			<!--
-				<div class="image_frame">
-					<h4 class="image_title">Image name</h4>
-					<div class="image_object">
-						<img src="../Images/stub_images/image1.jpg" alt="Not available" onclick="Redirect();">
-						<button class="download_button">Download</button>
-						<button class="remove_img_button">Delete</button>
-					</div>
-					<p class="image_tags">#tag #lorem #ipsum #sample</p>
-				</div>
-
-				<div class="image_frame">
-					<h4 class="image_title">Image name</h4>
-					<div class="image_object">
-						<img src="../Images/stub_images/abstract2.jpg" alt="Not available" onclick="Redirect();">
-						<button class="download_button">Download</button>
-						<button class="remove_img_button">Delete</button>
-					</div>
-					<p class="image_tags">#tag #lorem #ipsum #sample</p>
-				</div>
-
-				<div class="image_frame">
-					<h4 class="image_title">Image name</h4>
-					<div class="image_object">
-						<img src="../Images/stub_images/abstract.png" alt="Not available" onclick="Redirect();">
-						<button class="download_button">Download</button>
-						<button class="remove_img_button">Delete</button>
-					</div>
-					<p class="image_tags">#tag #lorem #ipsum #sample</p>
-				</div>
-
-				<div class="image_frame">
-					<h4 class="image_title">Image name</h4>
-					<div class="image_object">
-						<img src="../Images/stub_images/street.jpeg" alt="Not available" onclick="Redirect();">
-						<button class="download_button">Download</button>
-						<button class="remove_img_button">Delete</button>
-					</div>
-					<p class="image_tags">#tag #lorem #ipsum #sample</p>
-				</div>
--->
 			</div>
 		</main>
 
 	</body>
 
+
+
 	</html>
+
 <?php
 else :
 	?>

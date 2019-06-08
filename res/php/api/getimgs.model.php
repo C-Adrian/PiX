@@ -1,11 +1,20 @@
 <?php
-    function buildQuery()
-	{
-		$query_text = "SELECT img.id, img.localPath, info.title, info.tags, info.creationDate, info.dimension
-    	FROM images img LEFT JOIN exifinfo info ON img.id = info.imageID WHERE";
+    function getUserId($username, $connection)
+    {
+        $query_text = "SELECT id FROM users WHERE username = '" . $username . "'";
+        $query = $connection->prepare($query_text);
+        $query->execute();
+        $result = $query->get_result();
 
-    	if (isset($_GET['query']))
-			$text_to_search = $_GET['query'];
+        return $result->fetch_assoc()["id"];
+    }
+
+    function buildQuery($connection)
+	{
+		$query_text = "SELECT img.id, img.localPath, info.title, info.tags, info.creationDate, info.dimension, img.userID FROM images img LEFT JOIN exifinfo info ON img.id = info.imageID WHERE";
+
+    	if (isset($_GET['search']))
+			$text_to_search = $_GET['search'];
 		else
 			$text_to_search = "";
 
@@ -78,12 +87,28 @@
 
     	if (isset($_GET['user']))
     	{
-    		$user_id = $_GET['user'];
-    		$query_text .= " img.userID = " . $user_id . " AND";
+    		$username = $_GET['user'];
+            $user_id = getUserId($username, $connection);
+            if ($user_id)
+                $query_text .= " img.userID = " . $user_id . " AND";
     	}
 
     	if (substr_compare($query_text, " AND", -4) === 0)
     		$query_text = substr($query_text, 0, -4); //remove trailing " AND" from query
+
+
+        if (isset($_GET['limit']) and isset($_GET['offset']))
+        {
+            $results_limit = $_GET['limit'];
+            $results_offset = $_GET['offset'];
+            $query_text .= " LIMIT ".$results_limit." OFFSET ".$results_offset;
+        }
+
+        if (isset($_GET['limit']) and !isset($_GET['offset']))
+        {
+            $results_limit = $_GET['limit'];
+            $query_text .= " LIMIT ".$results_limit;
+        }
 
     	return $query_text;
 	}
@@ -93,12 +118,14 @@
 		$query_result = array();
 		$connection = connectToDatabase();
 
-		$query_text = buildQuery();
+		$query_text = buildQuery($connection);
     	//echo $query_text . "\n";
 
 		$query = $connection->prepare($query_text);
 		$query->execute();
 		$result = $query->get_result();
+
+        disconnectFromDatabase($connection);
 
 		while ($img_db_entry = $result->fetch_assoc()) 
 		{
@@ -109,6 +136,7 @@
             $img_data->creationDate=$img_db_entry["creationDate"];
             $img_data->dimension=$img_db_entry["dimension"];
             $img_data->localPath=$img_db_entry["localPath"];
+            $img_data->userID=$img_db_entry["userID"];
 
 	        array_push($query_result, $img_data);
    		}

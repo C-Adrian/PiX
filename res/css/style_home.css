@@ -72,7 +72,7 @@ main #image_display
 
 }
 
-.image_object button
+.image_object a
 {
 	display: none;
 	position: absolute;
@@ -83,6 +83,7 @@ main #image_display
 	padding-bottom: 0.3em;
 
 	font-family: "Verdana";
+	text-decoration: none;
 	font-size: 0.85em;
 	border-style: none;
 	border-radius: 0.2em;
@@ -104,7 +105,7 @@ main #image_display
 	left: 0.5em;
 }
 
-.image_object:hover button
+.image_object:hover a
 {
 	display: inline-block;
 }
@@ -147,7 +148,7 @@ main .image_display_label
 
 @media (max-width: 38em) {
 
-.image_object button
+.image_object a
 {
 	display: inline-block;
 	position: static;

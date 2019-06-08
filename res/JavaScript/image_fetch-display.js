@@ -30,12 +30,15 @@ function fetchImages()
             let img_div_obj_img = document.createElement("img");
             img_div_obj_img.setAttribute("alt", "Not Available");
             img_div_obj_img.setAttribute("src", imgs[img_index].localPath);
-            img_div_obj_img.setAttribute("onclick", "redirectToEdit(" + imgs[img_index].id + ")");
+            img_div_obj_img.setAttribute("onclick", "redirectToEdit(" + imgs[img_index].id + ")" );
             img_div_obj.appendChild(img_div_obj_img);
 
-            let img_div_obj_btn = document.createElement("button");
+            let img_div_obj_btn = document.createElement("a");
             img_div_obj_btn.className = "download_button";
             img_div_obj_btn.innerHTML = "Download";
+            img_div_obj_btn.setAttribute("href", imgs[img_index].localPath);
+            filename = imgs[img_index].title + "." + imgs[img_index].localPath.split(".").pop();
+            img_div_obj_btn.setAttribute("download", filename);
             img_div_obj.appendChild(img_div_obj_btn);
 
           let img_div_tags = document.createElement("p");

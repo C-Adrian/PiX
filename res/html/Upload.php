@@ -75,7 +75,7 @@ if (isset($_SESSION["username"])) :
         
 	</main>
     </form>
-	<script  src="../php/upload/Upload.js"></script>
+	<script  src="../JavaScript/Upload.js"></script>
 </body>
 
 </html>

@@ -179,3 +179,28 @@ main .image_display_label
 }
 
 }
+
+#load_more_btn
+{
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-top: 0.6em;
+	padding-bottom: 0.6em;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 3em;
+
+	font-family: "Verdana";
+	font-size: 0.9em;
+	border-style: none;
+	border-radius: 0.3em;
+	color: var(--nav-font-color);
+	background-color: var(--nav-bg-color);
+	cursor: pointer;
+}
+
+#load_more_btn:hover
+{
+	background-color: var(--nav-accent-color);
+}

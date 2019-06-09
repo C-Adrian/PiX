@@ -99,11 +99,11 @@ if (isset($_SESSION["username"])) :
 			</form>
 		</aside>
 
-		<main>
+		<main id="main">
 			<h3 class="image_display_label">Images</h3>
-			<div id="image_display">
+			
+			<div id="image_display"></div>
 
-			</div>
 		</main>
 
 	</body>

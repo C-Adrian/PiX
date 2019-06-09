@@ -1,4 +1,5 @@
-api_link = "/php/api/getimgs.php";
+const api_link = "/php/api/getimgs.php";
+const FETCH_SIZE = 5;
 
 var searchQuery;
 
@@ -16,9 +17,14 @@ function emptySearchQuery()
    min_height: "",
    max_height: "",
    user: "",
-   limit: "",
-   offset: ""
+   limit: FETCH_SIZE,
+   offset: 0
   };
+}
+
+function updateSearchQuery()
+{
+  searchQuery.offset += FETCH_SIZE;
 }
 
 function buildSimpleSearchQuery()

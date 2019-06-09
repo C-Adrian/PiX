@@ -45,7 +45,7 @@ if (isset($_SESSION["username"])) :
 						<button type="button" class="clickable_item" id="adv_search_2">Advanced
 								search</button>
 						<a href="Upload.php" class="clickable_item">Upload </a>
-						<a href="my_images.php" class="clickable_item">My images</a>
+						<a href="home.php" class="clickable_item">Home</a>
 						<form action="../php/auth/auth.controller.php" method="POST">
 							<button name="logout_btn" type="submit" class="clickable_item" value="logout">Logout</button>
 						</form>
@@ -100,22 +100,19 @@ if (isset($_SESSION["username"])) :
 			</form>
 		</aside>
 
-		</aside>
-		<main>
+		<main id="main">
 			<h3 class="image_display_label">My images</h3>
-			<div id="image_display">
 
-			<script src="../JavaScript/script_global.js"></script>
-			<script src="../JavaScript/query-request_build.js"></script>
-			<script src="../JavaScript/image_fetch-display.js"></script>
-			<script src="../JavaScript/my_images_controller.js"></script>
+			<div id="image_display"></div>
 
-			</div>
 		</main>
 
 	</body>
 
-
+	<script src="../JavaScript/script_global.js"></script>
+	<script src="../JavaScript/query-request_build.js"></script>
+	<script src="../JavaScript/image_fetch-display.js"></script>
+	<script src="../JavaScript/my_images_controller.js"></script>
 
 	</html>
 

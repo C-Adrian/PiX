@@ -10,6 +10,10 @@ function fetchImages()
     .then(resp => resp.json())
     .then(imgs => {
       currentResultsCount += imgs.length;
+      if (imgs.length < FETCH_SIZE)
+      {
+        removeLoadMoreImagesButton();
+      }
 
       let img_display = document.getElementById("image_display");
 
@@ -71,12 +75,14 @@ function fetchMyImages()
   fetchImages();
 }
 
+
 function fetchImagesSimpleSearch()
 {
   emptySearchQuery();
   buildSimpleSearchQuery();
 
   removeImages();
+  addLoadMoreImagesButton();
   fetchImages();
 }
 
@@ -87,6 +93,7 @@ function fetchMyImagesSimpleSearch()
   addUsernameToSearchQuery();
 
   removeImages();
+  addLoadMoreImagesButton();
   fetchImages();
 }
 
@@ -96,6 +103,7 @@ function fetchImagesAdvancedSearch()
   buildAdvancedSearchQuery();
 
   removeImages();
+  addLoadMoreImagesButton();
   fetchImages();
 
   toggleAdvSearch();
@@ -108,9 +116,16 @@ function fetchMyImagesAdvancedSearch()
   addUsernameToSearchQuery();
 
   removeImages();
+  addLoadMoreImagesButton();
   fetchImages();
 
   toggleAdvSearch();
+}
+
+function fetchMoreImages()
+{
+  updateSearchQuery();
+  fetchImages();
 }
 
 function removeImages()
@@ -121,4 +136,25 @@ function removeImages()
     img_display.removeChild(img_display.firstChild);
   }
   currentResultsCount = 0;
+}
+
+function addLoadMoreImagesButton()
+{
+  if (!document.getElementById("load_more_btn"))
+  {
+    let load_more_btn = document.createElement("button");
+    load_more_btn.id = "load_more_btn";
+    load_more_btn.innerHTML = "More images";
+    load_more_btn.addEventListener("click", fetchMoreImages);
+    document.getElementById("main").appendChild(load_more_btn);
+  }
+}
+
+function removeLoadMoreImagesButton()
+{
+  if(document.getElementById("load_more_btn"))
+  {
+    let load_more_btn = document.getElementById("load_more_btn");
+    document.getElementById("main").removeChild(load_more_btn);
+  }
 }

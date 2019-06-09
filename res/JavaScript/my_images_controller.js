@@ -1,4 +1,3 @@
-
 function addListeners()
 {
   document.getElementById("simple_search_button").addEventListener("click", fetchMyImagesSimpleSearch);
@@ -8,6 +7,5 @@ function addListeners()
   document.getElementById("search_box").setAttribute("onKeyPress", "if (event.which == 13) fetchMyImagesSimpleSearch();");
 }
 
-emptySearchQuery();
+fetchMyImagesSimpleSearch();
 addListeners();
-fetchMyImages();

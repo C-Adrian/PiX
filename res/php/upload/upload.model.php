@@ -33,10 +33,30 @@ function upload($fisiere_alese,$tag1,$titlu,$descriere,$i)
         //{
             $ext = pathinfo($fisiere_alese['name'][$i], PATHINFO_EXTENSION);
         $data=date(DATE_RFC2822);
-        if($tag1[0]!='#')
+        /*if($tag1[0]!='#')
         $tags='#'.$tag1;
         else
-        $tags=$tag1;
+        $tags=$tag1;*/
+        $tags="";
+        $tg_uri=explode(" ",$tag1);
+        foreach($tg_uri as $tg)
+        {
+            if($tg[0]!='#')
+            {
+                if($tags=="")
+                    $tags=$tags.'#'.$tg;
+                else
+                    $tags=$tags.' #'.$tg;
+            }
+            else
+            {
+                if($tags=="")
+                    $tags=$tags.$tg;
+                else
+                    $tags=$tags.' '.$tg;
+            }
+        }
+
         $size=$fisiere_alese['size'][$i];
         
         

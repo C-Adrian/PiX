@@ -93,7 +93,6 @@ nav .clickable_item:hover {
 	justify-content: space-between;
 	align-self: baseline ;
 	padding-top:4em;
-	margin-bottom: 10em;
 
 }
 
@@ -119,9 +118,10 @@ img {
 }
 .imagine_pusa{
 	height: auto;
-	max-width: 30%;
-	margin-top: 10px;
-	
+	max-width: 50%;
+	margin-top: 50px;
+	border-style: solid;
+	border-color: antiquewhite;
 	margin-left: auto;
 	margin-right: auto
 }
@@ -154,5 +154,13 @@ img {
 	.informatii, .imagine{
 		width: auto;
 		padding-top: 0em;
+	}
+	.imagine_pusa{
+		height: auto;
+		margin-top: 20px;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto
+		
 	}
 }

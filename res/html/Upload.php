@@ -21,7 +21,7 @@ if (isset($_SESSION["username"])) :
 <body>
 	<nav id="navbar">
 		<div id="navbar_half_right" class="navbar_half">
-			<a href="Home.php" class="clickable_item">Home</a>
+			<a href="Home.html" class="clickable_item">Home</a>
 			<form action="../php/auth/auth.controller.php" method="POST">
 				<button name="logout_btn" type="submit" class="clickable_item" id="logout_button_1" value="logout">Logout</button>
 			</form>

@@ -1,0 +1,20 @@
+RewriteEngine On
+
+ErrorDocument 404 /html/error.html
+
+RewriteRule ^css/$ /error.html
+RewriteRule ^Images/$ /error.html
+RewriteRule ^html/$ /error.html
+
+RewriteRule ^html/(.+).html$ /html/$1.php
+
+RewriteRule ^database(.*) /error.html
+RewriteRule ^php/$ /error.html
+RewriteRule ^php/(.*)/$ /error.html
+
+RewriteRule ^php/(.*)/$ /error.html
+RewriteRule ^getimgs(.*)$ /php/api/getimgs.php$1
+
+RewriteRule ^((?=[^/]*)(?=!index)).php$ /html/$1.php
+
+RewriteRule (?!^html/)(^.*).html$ /html/$1.php

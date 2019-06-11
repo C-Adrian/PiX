@@ -1,8 +1,8 @@
 <?php
 session_start();
 if (isset($_SESSION["username"])) {
-    header("location: ../../html/home.php");
+    header("location: home.html");
 } else {
-    header("location: ../../html/Login.php");
+    header("location: Login.html");
 }
 ?>

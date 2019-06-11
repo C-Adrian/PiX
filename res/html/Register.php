@@ -55,7 +55,7 @@
 
 		</form>
 		<br>
-		<a href="Login.php"> Inapoi la pagina de logare. </a>
+		<a href="login.html"> Inapoi la pagina de logare. </a>
 	</div>
 
 

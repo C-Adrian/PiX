@@ -35,7 +35,7 @@
 		}
 		?>
 		<br>
-		<a href="Register.php"> Apasati aici pentru a crea un cont nou! </a>
+		<a href="Register.html"> Apasati aici pentru a crea un cont nou! </a>
 
 	</div>
 

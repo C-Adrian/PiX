@@ -33,8 +33,8 @@ if (isset($_SESSION["username"])) :
 			</div>
 
 			<div id="navbar_half_right" class="navbar_half">
-				<a href="Upload.php" class="clickable_item">Upload </a>
-				<a href="my_images.php" class="clickable_item">My images</a>
+				<a href="Upload.html" class="clickable_item">Upload </a>
+				<a href="my_images.html" class="clickable_item">My images</a>
 				<form action="../php/auth/auth.controller.php" method="POST">
 					<button name="logout_btn" type="submit" class="clickable_item" value="logout">Logout</button>
 				</form>
@@ -43,8 +43,8 @@ if (isset($_SESSION["username"])) :
 					<div class="dropdown_content">
 						<button type="button" class="clickable_item" id="adv_search_2">Advanced
 								search</button>
-						<a href="Upload.php" class="clickable_item">Upload </a>
-						<a href="my_images.php" class="clickable_item">My images</a>
+						<a href="Upload.html" class="clickable_item">Upload </a>
+						<a href="my_images.html" class="clickable_item">My images</a>
 						<form action="../php/auth/auth.controller.php" method="POST">
 							<button name="logout_btn" type="submit" class="clickable_item" value="logout">Logout</button>
 						</form>
@@ -105,7 +105,7 @@ if (isset($_SESSION["username"])) :
 			<div id="image_display"></div>
 
 		</main>
-
+		
 	</body>
 
 	<script src="../JavaScript/script_global.js"></script>

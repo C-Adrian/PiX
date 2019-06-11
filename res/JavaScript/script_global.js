@@ -15,7 +15,7 @@ function redirectToEdit(imageId) {
     var initCookie = "init=1; expires=0; path=/";
     document.cookie = imageIdCookie;
     document.cookie = initCookie;
-    window.location = "EditAndViewPage.php";
+    window.location = "EditAndViewPage.html";
 }
 function checkOnlyOne(checkBox) {
 

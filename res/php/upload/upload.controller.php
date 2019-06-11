@@ -13,9 +13,9 @@ if ($_POST["submit"] == "Incarca")
    
         $resultat_imagine=upload($_FILES["imagini_alese"],$_POST["Tag".($i+1).""],$_POST["Titlu".($i+1).""],$_POST["Descriere".($i+1).""],$i);
         if($resultat_imagine)
-                header("location: ../../html/home.php");
+                header("location: ../../home.html");
                 else
-                header("location: ../../html/Upload.php");
+                header("location: ../../Upload.html");
     }
 
 

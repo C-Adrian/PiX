@@ -19,6 +19,7 @@ if (isset($_SESSION["username"])) :
         <link rel="stylesheet" href="../css/style_home.css">
         <link rel="stylesheet" href="../css/style_errors.css">
         <title>Edit And View</title>
+        <script src="../JavaScript/script_global.js"></script>
     </head>
 
     <body>
@@ -48,7 +49,7 @@ if (isset($_SESSION["username"])) :
                     $grayscaleF = "../Images/temp/" . $_SESSION["username"] . "/grayscale" . $_COOKIE["imageId"] . "." . $ext;
                     $embossF = "../Images/temp/" . $_SESSION["username"] . "/emboss" . $_COOKIE["imageId"] . "." . $ext;
                     $meanF = "../Images/temp/" . $_SESSION["username"] . "/mean" . $_COOKIE["imageId"] . "." . $ext;
-                    $original = "../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext;
+                    //$original = "../Images/temp/" . $_SESSION["username"] . "/temp" . $_COOKIE["imageId"] . "." . $ext;
                     ?>
                     <aside id="right">
                         <h4>Aplica un filtru:</h4>
@@ -58,35 +59,35 @@ if (isset($_SESSION["username"])) :
                                     <?php
                                     echo '<img src="' . $negativeF . '" alt="IMG_FILTER_NEGATE">'
                                     ?>
-                                    <input id="IMG_FILTER_NEGATE" type="checkbox" name="filter" value="IMG_FILTER_NEGATE">
+                                    <input class="filterCBX" onclick="checkOnlyOne(this.value);" id="IMG_FILTER_NEGATE" type="checkbox" name="filter" value="IMG_FILTER_NEGATE">
                                     <label for="IMG_FILTER_NEGATE">Negate Filter</label>
                                 </div>
                                 <div class="filter">
                                     <?php
                                     echo '<img src="' . $grayscaleF . '" alt="IMG_FILTER_NEGATE">'
                                     ?>
-                                    <input id="IMG_FILTER_GRAYSCALE" type="checkbox" name="filter" value="IMG_FILTER_GRAYSCALE">
+                                    <input class="filterCBX" onclick="checkOnlyOne(this.value);" id="IMG_FILTER_GRAYSCALE" type="checkbox" name="filter" value="IMG_FILTER_GRAYSCALE">
                                     <label for="IMG_FILTER_GRAYSCALE">Grayscale Filter</label>
                                 </div>
                                 <div class="filter">
                                     <?php
                                     echo '<img src="' . $embossF . '" alt="IMG_FILTER_NEGATE">'
                                     ?>
-                                    <input id="IMG_FILTER_EMBOSS" type="checkbox" name="filter" value="IMG_FILTER_EMBOSS">
+                                    <input class="filterCBX" onclick="checkOnlyOne(this.value);" id="IMG_FILTER_EMBOSS" type="checkbox" name="filter" value="IMG_FILTER_EMBOSS">
                                     <label for="IMG_FILTER_EMBOSS">Emboss Filter</label>
                                 </div>
                                 <div class="filter">
                                     <?php
                                     echo '<img src="' . $meanF . '" alt="IMG_FILTER_NEGATE">'
                                     ?>
-                                    <input id="IMG_FILTER_MEAN_REMOVAL" type="checkbox" name="filter" value="IMG_FILTER_MEAN_REMOVAL">
+                                    <input class="filterCBX" onclick="checkOnlyOne(this.value);" id="IMG_FILTER_MEAN_REMOVAL" type="checkbox" name="filter" value="IMG_FILTER_MEAN_REMOVAL">
                                     <label for="IMG_FILTER_MEAN_REMOVAL">Mean Remove Filter</label>
                                 </div>
                                 <div class="filter">
                                     <?php
-                                    echo '<img src="' . $original . '" alt="IMG_FILTER_NEGATE">'
+                                    echo '<img src="' . $imagePath . '" alt="IMG_FILTER_NEGATE">'
                                     ?>
-                                    <input id="no_filter" type="checkbox" name="filter" value="no_filter">
+                                    <input class="filterCBX" onclick="checkOnlyOne(this.value);" id="no_filter" type="checkbox" name="filter" value="no_filter">
                                     <label for="no_filter">No Filter</label>
                                 </div>
                             </div>

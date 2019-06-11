@@ -17,3 +17,14 @@ function redirectToEdit(imageId) {
     document.cookie = initCookie;
     window.location = "EditAndViewPage.php";
 }
+function checkOnlyOne(checkBox) {
+
+    var checkBoxs = document.getElementsByClassName('filterCBX');
+    var i;
+
+    for (i = 0; i < checkBoxs.length; i++) {
+        if (checkBoxs[i].value != checkBox) {
+            checkBoxs[i].checked = false;
+        }
+    }
+}

@@ -85,66 +85,160 @@ function createTempFilteredImg($ext, $path)
 {
     if ($ext == "jpg") {
         $negateF = "../Images/temp/" . $_SESSION["username"] . "/negative" . $_COOKIE["imageId"] . "." . $ext;
-        $img = imagecreatefromjpeg($path);
+        if (filesize($path) < 307200) {
+            $img = imagecreatefromjpeg($path);
+        } else {
+            $img1 = imagecreatefromjpeg($path);
+            list($width, $height) = getimagesize($path);
+            $img = imagecreatetruecolor($width * 0.25, $height * 0.25);
+            imagecopyresized($img, $img1, 0, 0, 0, 0, $width * 0.25, $height * 0.25, $width, $height);
+        }
         imagefilter($img, IMG_FILTER_NEGATE);
         imagejpeg($img, $negateF);
         imagedestroy($img);
+
         $grayscaleF = "../Images/temp/" . $_SESSION["username"] . "/grayscale" . $_COOKIE["imageId"] . "." . $ext;
-        $img = imagecreatefromjpeg($path);
+        if (filesize($path) < 307200) {
+            $img = imagecreatefromjpeg($path);
+        } else {
+            $img1 = imagecreatefromjpeg($path);
+            list($width, $height) = getimagesize($path);
+            $img = imagecreatetruecolor($width * 0.25, $height * 0.25);
+            imagecopyresized($img, $img1, 0, 0, 0, 0, $width * 0.25, $height * 0.25, $width, $height);
+        }
         imagefilter($img, IMG_FILTER_GRAYSCALE);
         imagejpeg($img, $grayscaleF);
         imagedestroy($img);
+
         $embossF = "../Images/temp/" . $_SESSION["username"] . "/emboss" . $_COOKIE["imageId"] . "." . $ext;
-        $img = imagecreatefromjpeg($path);
+        if (filesize($path) < 307200) {
+            $img = imagecreatefromjpeg($path);
+        } else {
+            $img1 = imagecreatefromjpeg($path);
+            list($width, $height) = getimagesize($path);
+            $img = imagecreatetruecolor($width * 0.25, $height * 0.25);
+            imagecopyresized($img, $img1, 0, 0, 0, 0, $width * 0.25, $height * 0.25, $width, $height);
+        }
         imagefilter($img, IMG_FILTER_EMBOSS);
         imagejpeg($img, $embossF);
         imagedestroy($img);
+
         $meanF = "../Images/temp/" . $_SESSION["username"] . "/mean" . $_COOKIE["imageId"] . "." . $ext;
-        $img = imagecreatefromjpeg($path);
+        if (filesize($path) < 307200) {
+            $img = imagecreatefromjpeg($path);
+        } else {
+            $img1 = imagecreatefromjpeg($path);
+            list($width, $height) = getimagesize($path);
+            $img = imagecreatetruecolor($width * 0.25, $height * 0.25);
+            imagecopyresized($img, $img1, 0, 0, 0, 0, $width * 0.25, $height * 0.25, $width, $height);
+        }
         imagefilter($img, IMG_FILTER_MEAN_REMOVAL);
         imagejpeg($img, $meanF);
         imagedestroy($img);
     }
     if ($ext == "bmp") {
         $negateF = "../Images/temp/" . $_SESSION["username"] . "/negative" . $_COOKIE["imageId"] . "." . $ext;
-        $img = imagecreatefrombmp($path);
+        if (filesize($path) < 307200) {
+            $img = imagecreatefrombmp($path);
+        } else {
+            $img1 = imagecreatefrombmp($path);
+            list($width, $height) = getimagesize($path);
+            $img = imagecreatetruecolor($width * 0.25, $height * 0.25);
+            imagecopyresized($img, $img1, 0, 0, 0, 0, $width * 0.25, $height * 0.25, $width, $height);
+        }
         imagefilter($img, IMG_FILTER_NEGATE);
         imagebmp($img, $negateF);
         imagedestroy($img);
+
         $grayscaleF = "../Images/temp/" . $_SESSION["username"] . "/grayscale" . $_COOKIE["imageId"] . "." . $ext;
-        $img = imagecreatefrombmp($path);
+        if (filesize($path) < 307200) {
+            $img = imagecreatefrombmp($path);
+        } else {
+            $img1 = imagecreatefrombmp($path);
+            list($width, $height) = getimagesize($path);
+            $img = imagecreatetruecolor($width * 0.25, $height * 0.25);
+            imagecopyresized($img, $img1, 0, 0, 0, 0, $width * 0.25, $height * 0.25, $width, $height);
+        }
         imagefilter($img, IMG_FILTER_GRAYSCALE);
         imagebmp($img, $grayscaleF);
         imagedestroy($img);
+
         $embossF = "../Images/temp/" . $_SESSION["username"] . "/emboss" . $_COOKIE["imageId"] . "." . $ext;
-        $img = imagecreatefrombmp($path);
+        if (filesize($path) < 307200) {
+            $img = imagecreatefrombmp($path);
+        } else {
+            $img1 = imagecreatefrombmp($path);
+            list($width, $height) = getimagesize($path);
+            $img = imagecreatetruecolor($width * 0.25, $height * 0.25);
+            imagecopyresized($img, $img1, 0, 0, 0, 0, $width * 0.25, $height * 0.25, $width, $height);
+        }
         imagefilter($img, IMG_FILTER_EMBOSS);
         imagebmp($img, $embossF);
         imagedestroy($img);
+
         $meanF = "../Images/temp/" . $_SESSION["username"] . "/mean" . $_COOKIE["imageId"] . "." . $ext;
-        $img = imagecreatefrombmp($path);
+        if (filesize($path) < 307200) {
+            $img = imagecreatefrombmp($path);
+        } else {
+            $img1 = imagecreatefrombmp($path);
+            list($width, $height) = getimagesize($path);
+            $img = imagecreatetruecolor($width * 0.25, $height * 0.25);
+            imagecopyresized($img, $img1, 0, 0, 0, 0, $width * 0.25, $height * 0.25, $width, $height);
+        }
         imagefilter($img, IMG_FILTER_MEAN_REMOVAL);
         imagebmp($img, $meanF);
         imagedestroy($img);
     }
     if ($ext == "png") {
         $negateF = "../Images/temp/" . $_SESSION["username"] . "/negative" . $_COOKIE["imageId"] . "." . $ext;
-        $img = imagecreatefrompng($path);
+        if (filesize($path) < 307200) {
+            $img = imagecreatefrompng($path);
+        } else {
+            $img1 = imagecreatefrompng($path);
+            list($width, $height) = getimagesize($path);
+            $img = imagecreatetruecolor($width * 0.25, $height * 0.25);
+            imagecopyresized($img, $img1, 0, 0, 0, 0, $width * 0.25, $height * 0.25, $width, $height);
+        }
         imagefilter($img, IMG_FILTER_NEGATE);
         imagepng($img, $negateF);
         imagedestroy($img);
+
         $grayscaleF = "../Images/temp/" . $_SESSION["username"] . "/grayscale" . $_COOKIE["imageId"] . "." . $ext;
-        $img = imagecreatefrompng($path);
+
+        if (filesize($path) < 307200) {
+            $img = imagecreatefrompng($path);
+        } else {
+            $img1 = imagecreatefrompng($path);
+            list($width, $height) = getimagesize($path);
+            $img = imagecreatetruecolor($width * 0.25, $height * 0.25);
+            imagecopyresized($img, $img1, 0, 0, 0, 0, $width * 0.25, $height * 0.25, $width, $height);
+        }
         imagefilter($img, IMG_FILTER_GRAYSCALE);
         imagepng($img, $grayscaleF);
         imagedestroy($img);
+
         $embossF = "../Images/temp/" . $_SESSION["username"] . "/emboss" . $_COOKIE["imageId"] . "." . $ext;
-        $img = imagecreatefrompng($path);
+        if (filesize($path) < 307200) {
+            $img = imagecreatefrompng($path);
+        } else {
+            $img1 = imagecreatefrompng($path);
+            list($width, $height) = getimagesize($path);
+            $img = imagecreatetruecolor($width * 0.25, $height * 0.25);
+            imagecopyresized($img, $img1, 0, 0, 0, 0, $width * 0.25, $height * 0.25, $width, $height);
+        }
         imagefilter($img, IMG_FILTER_EMBOSS);
         imagepng($img, $embossF);
         imagedestroy($img);
+
         $meanF = "../Images/temp/" . $_SESSION["username"] . "/mean" . $_COOKIE["imageId"] . "." . $ext;
-        $img = imagecreatefrompng($path);
+        if (filesize($path) < 307200) {
+            $img = imagecreatefrompng($path);
+        } else {
+            $img1 = imagecreatefrompng($path);
+            list($width, $height) = getimagesize($path);
+            $img = imagecreatetruecolor($width * 0.25, $height * 0.25);
+            imagecopyresized($img, $img1, 0, 0, 0, 0, $width * 0.25, $height * 0.25, $width, $height);
+        }
         imagefilter($img, IMG_FILTER_MEAN_REMOVAL);
         imagepng($img, $meanF);
         imagedestroy($img);
@@ -164,5 +258,5 @@ function editInit()
     setcookie("filteredImg", $ext, 0, "/");
     setcookie("init", 0, time(), "/");
 
-    createTempFilteredImg($ext,$fullImagePath);
+    createTempFilteredImg($ext, $fullImagePath);
 }

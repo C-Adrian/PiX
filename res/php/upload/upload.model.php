@@ -2,41 +2,15 @@
 include_once "../database.php";
 function upload($fisiere_alese,$tag1,$titlu,$descriere,$i)
 {
-    /*if($fisiere_alese['name'][0]==NULL)
-    {
-        setcookie("NoImage", 1, time() + 1, "/");
-        return false;
-    }
     
-    if($tag1==NULL)
-    {   
-        setcookie("NoTag1", 1, time() + 1, "/");
-        return false;
-    }
-    if($titlu==NULL)
-    {
-        setcookie("NoTitle", 1, time() + 1, "/");
-        return false;
-    }
-
-    if($descriere==NULL)
-    {
-        setcookie("NoDescriere", 1, time() + 1, "/");
-        return false;
-    }*/
     $connection = connectToDatabase();
 
         if($fisiere_alese['name'][0]!=NULL)
     {
         $total = count($fisiere_alese['name']);
-        //for( $i=0 ; $i < $total ; $i++ )
-        //{
-            $ext = pathinfo($fisiere_alese['name'][$i], PATHINFO_EXTENSION);
+        
+        $ext = pathinfo($fisiere_alese['name'][$i], PATHINFO_EXTENSION);
         $data=date(DATE_RFC2822);
-        /*if($tag1[0]!='#')
-        $tags='#'.$tag1;
-        else
-        $tags=$tag1;*/
         $tags="";
         $tg_uri=explode(" ",$tag1);
         foreach($tg_uri as $tg)
@@ -75,8 +49,13 @@ function upload($fisiere_alese,$tag1,$titlu,$descriere,$i)
         $checkImgID->close();
         $ImgId=(string)((int)$col2['id']+1);
         
-
+        if($ext=='jpg' or $ext=='png' or $ext=='bmp' )
         move_uploaded_file($fisiere_alese['tmp_name'][$i],'../../Images/DataBaseImages/'.$ImgId.'.'.$ext);
+        else{
+            $ext='png';
+            $im=imagecreatefromstring(file_get_contents($fisiere_alese['tmp_name'][$i]));
+            imagepng($im,'../../Images/DataBaseImages/'.$ImgId.'.'.$ext);
+            }
         list($width, $height, $t, $attr) = getimagesize('../../Images/DataBaseImages/'.$ImgId.'.'.$ext);
         $dimensiune=(string)$width."x".(string)$height; 
         $localpath='../../Images/DataBaseImages/'.$ImgId.'.'.$ext;
@@ -93,7 +72,7 @@ function upload($fisiere_alese,$tag1,$titlu,$descriere,$i)
         $insertStatement -> execute();
         $insertStatement -> close();
             
-        //}
+        
         
 
     }

@@ -10,8 +10,10 @@ function toggleAdvSearch() {
     }
 }
 function redirectToEdit(imageId) {
-    var str = "imageId=".concat(imageId.toString()).concat("; expires=0; path=/");
-    document.cookie = str;
+    var imageIdCookie = "imageId=".concat(imageId.toString()).concat("; expires=0; path=/");
     //document.cookie = "imageId=1; expires=0; path=/";
+    var initCookie = "init=1; expires=0; path=/";
+    document.cookie = imageIdCookie;
+    document.cookie = initCookie;
     window.location = "EditAndViewPage.php";
 }

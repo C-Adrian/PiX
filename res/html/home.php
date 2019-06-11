@@ -28,7 +28,7 @@ if (isset($_SESSION["username"])) :
 			<div id="navbar_half_left" class="navbar_half">
 					<input type="text" placeholder="Search..." class="search_box" id="search_box" >
 					<button type="button" class="clickable_item" id="simple_search_button" >Go</button>
-					<button type="button" class="clickable_item" id="adv_search_1"">Advanced
+					<button type="button" class="clickable_item" id="adv_search_1">Advanced
 						search</button>
 			</div>
 
